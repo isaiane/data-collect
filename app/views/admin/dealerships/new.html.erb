@@ -1,0 +1,26 @@
+<div class="container-fluid page-header" id="page-title">
+	<div class="container">
+		<div class="row">
+		  <div class="col-xs-6">
+		  	<h4 class="page-title">
+		    	<i class="fa fa-university"></i>
+		    	<%= link_to @account.name, @account %>
+		    	<span class="fa fa-chevron-right"></span>
+		    	<%= link_to t('dealership').pluralize(I18n.locale.to_sym), account_dealerships_path(@account) %>
+		    	<span class="fa fa-chevron-right"></span>
+		    	<%= t('helpers.submit.create', model: t('dealership')) %>
+	    	</h4>
+		  </div>
+		</div>
+	</div>
+</div>
+
+<section class="container-fluid container-form">
+	<div class="container">
+		<div class="row">
+			<div id="main">
+				<%= render "form" %>
+			</div>
+		</div>
+	</div>
+</section>

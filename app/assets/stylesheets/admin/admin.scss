@@ -1,0 +1,13 @@
+@import "../global";
+
+html {
+	position: relative;
+	padding-bottom: 40px;
+	min-height: 100%;
+	background-color: $color-bg;
+	body:not(#login-wrap) {background: $color-bg;}
+}
+
+@media (max-width: 768px) {
+	html {padding-bottom: 0;}
+}

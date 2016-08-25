@@ -10,6 +10,31 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require jquery.Jcrop
+ *= require toastr
  *= require_tree .
  *= require_self
  */
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import "font-awesome";
+@import "bootstrap-sprockets";
+@import "global";
+@import "bootstrap";
+@import "modal";
+@import "menus";
+@import "animation";
+@import "video_bg";
+@import "accordion_dropdown_menu";
+
+a, button {@include afTransition(0.15s);}
+
+body {color: $color-4th;}
+
+small, .small {
+	font-size: $font-wee;
+	line-height: 1.35em;
+  display: inline-block;
+  margin-top: 5px;
+  a {text-decoration: underline;}
+}

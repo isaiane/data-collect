@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Autódromo</title>
+		<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link rel="shortcut icon" href="/assets/admin/favicon.png">
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	</head>
+	<body id="login-wrap">
+		<section id="main">
+			<div>
+				<div class="container-fluid full-height">
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="login-wrap">
+							  <%= yield %>
+							</div>
+						</div>
+					</div>
+					<footer class="main">
+						<div class="container-fluid">
+							<p>© 2016 <strong>Autodrómo</strong> by <a href="http://www.autoforce.com.br" target="_blank">AutoForce.</a></p>
+						</div>
+					</footer>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>

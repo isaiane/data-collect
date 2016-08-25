@@ -1,0 +1,29 @@
+<div class="container-fluid page-header" id="page-title">
+	<div class="container">
+		<div class="row">
+		  <div class="col-xs-12 col-sm-6">
+		  	<h4 class="page-title"><i class="fa fa-flask"></i><%= t(".title") %></h4>
+		  </div>
+		  <div class="col-xs-6">
+	  		<a href="#options-model" class="auto-more call-modal"><i class="fa fa-plus"></i></a>
+	  	</div>
+		</div>
+	</div>
+</div>
+
+<%= render "shared" %>
+
+<section class="container-fluid">
+	<div class="container">
+		<div id="main" class="overview-main">
+			<%= render "overview" %>
+		</div>
+	</div>
+</section>
+
+<div class="overlay admin">
+	<div class="dark-side"></div>
+	<div id="options-model" class="modal options-modal">
+		<%= render "options" %>
+	</div>
+</div>

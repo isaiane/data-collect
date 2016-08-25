@@ -1,0 +1,330 @@
+---
+pt-BR:
+  user: "Usuário"
+  pluralize:
+    all:
+      female: "Todas as %{model}"
+      male: "Todos os %{model}"
+    messages:
+      one: "%{model}"
+      other: "%{model} (%{count})"
+  overview:
+    title: "Visão Geral"
+    settings: "Configurações"
+  form:
+    optional: "Opcional"
+    list_of_icons: "Lista de icones"
+    cannot_excluded_title: "Não pode ser excluido porque possui: "
+    search: "Buscar"
+    name: "Nome"
+    lastname: "Sobrenome"
+    email: "Email"
+    phone: "Telefone"
+    slug: "Slug"
+    able:
+      zero: "Ativo"
+      one: "Inativo"
+    select_account: "Selecione uma conta"
+    slug_small: "Letras minúsculas, números e _"
+    no_activity: "Sem atividade"
+    last_update: "Última Atualização"
+    latest_activities: "Últimas Atividades"
+  admin:
+    users:
+      form:
+        profile:
+          title: "Perfil"
+          slug: "Nome de usuário"
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam blandit non ipsum consectetur posuere. Nullam ullamcorper dolor sit amet enim ultricies consectetur ac sit amet justo. Ut cursus nunc sapien, eu iaculis ex accumsan ac."
+          image: "Image de perfil"
+          placeholder:
+            email: "Entre com seu email"
+            slug: "Entre com seu nome de usuário"
+        password:
+          title: "Senha"
+          password_small: "Mínimo de 8 letras, números e símbolos."
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam blandit non ipsum consectetur posuere."
+          button: "Mudar senha"
+          password_confirmation: "Confirmar senha"
+          placeholder:
+            password: "Entre com sua senha"
+            password_confirmation: "Entre com sua senha novamente"
+        profile_type:
+          title: "Tipo de usuário"
+          master_rules: "Regras de Mestres"
+          common_rules: "Regras Comuns"
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam blandit non ipsum consectetur posuere."
+          admin: "Admin"
+          pit_stop: "Pit-Stop"
+          content: "Conteúdo"
+          account_manager: "Gerente de Conta"
+          administrator: "Administrador"
+          manager: "Gerente"
+          editor: "Editor"
+          attendant: "Atendente"
+          salesman: "Vendedor"
+          agency: "Agência"
+        account:
+          title: "Conta do Usuário"
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam blandit non ipsum consectetur posuere."
+        user_information:
+          title: "Informações do Usuário"
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          placeholder:
+            name: "Informe seu nome"
+            lastname: "Informe seu sobrenome"
+            phone: "Informe seu telefone"
+        language:
+          title: "Idioma"
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        save:
+          title: "Salvar"
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      crop:
+        title: "Cortar imagem"
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam blandit non ipsum consectetur posuere."
+        button: "Cortar"
+        preview:
+          title: "Previa"
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam blandit non ipsum consectetur posuere. Nullam ullamcorper dolor sit amet enim ultricies consectetur ac sit amet justo. Ut cursus nunc sapien, eu iaculis ex accumsan ac."
+      edit_password:
+        title: "Nova Senha"
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam blandit non ipsum consectetur posuere."
+        button: "Alterar"
+        password: "Nova senha"
+        password_confirmation: "Confirmar nova senha"
+        placeholder:
+          password: "Entre com sua nova senha"
+          password_confirmation: "Entre com sua nova senha novamente"
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'A validação falhou: %{errors}'
+        restrict_dependent_destroy:
+          has_one: Não é possível excluir o registro pois existe um %{record} dependente
+          has_many: Não é possível excluir o registro pois existem %{record} dependentesW
+  date:
+    abbr_day_names:
+    - Dom
+    - Seg
+    - Ter
+    - Qua
+    - Qui
+    - Sex
+    - Sáb
+    abbr_month_names:
+    -
+    - Jan
+    - Fev
+    - Mar
+    - Abr
+    - Mai
+    - Jun
+    - Jul
+    - Ago
+    - Set
+    - Out
+    - Nov
+    - Dez
+    day_names:
+    - Domingo
+    - Segunda-feira
+    - Terça-feira
+    - Quarta-feira
+    - Quinta-feira
+    - Sexta-feira
+    - Sábado
+    formats:
+      default: "%d/%m/%Y"
+      long: "%d de %B de %Y"
+      short: "%d de %B"
+    month_names:
+    -
+    - Janeiro
+    - Fevereiro
+    - Março
+    - Abril
+    - Maio
+    - Junho
+    - Julho
+    - Agosto
+    - Setembro
+    - Outubro
+    - Novembro
+    - Dezembro
+    order:
+    - :day
+    - :month
+    - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: cerca de 1 hora
+        other: cerca de %{count} horas
+      about_x_months:
+        one: cerca de 1 mês
+        other: cerca de %{count} meses
+      about_x_years:
+        one: cerca de 1 ano
+        other: cerca de %{count} anos
+      almost_x_years:
+        one: quase 1 ano
+        other: quase %{count} anos
+      half_a_minute: meio minuto
+      less_than_x_minutes:
+        one: menos de um minuto
+        other: menos de %{count} minutos
+      less_than_x_seconds:
+        one: menos de 1 segundo
+        other: menos de %{count} segundos
+      over_x_years:
+        one: mais de 1 ano
+        other: mais de %{count} anos
+      x_days:
+        one: 1 dia
+        other: "%{count} dias"
+      x_minutes:
+        one: 1 minuto
+        other: "%{count} minutos"
+      x_months:
+        one: 1 mês
+        other: "%{count} meses"
+      x_seconds:
+        one: 1 segundo
+        other: "%{count} segundos"
+    prompts:
+      day: Dia
+      hour: Hora
+      minute: Minuto
+      month: Mês
+      second: Segundo
+      year: Ano
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: deve ser aceito
+      blank: não pode ficar em branco
+      present: deve ficar em branco
+      confirmation: não é igual a %{attribute}
+      empty: não pode ficar vazio
+      equal_to: deve ser igual a %{count}
+      even: deve ser par
+      exclusion: não está disponível
+      greater_than: deve ser maior que %{count}
+      greater_than_or_equal_to: deve ser maior ou igual a %{count}
+      inclusion: não está incluído na lista
+      invalid: não é válido
+      less_than: deve ser menor que %{count}
+      less_than_or_equal_to: deve ser menor ou igual a %{count}
+      model_invalid: 'A validação falhou: %{errors}'
+      not_a_number: não é um número
+      not_an_integer: não é um número inteiro
+      odd: deve ser ímpar
+      required: deve existir
+      taken: já está em uso
+      too_long:
+        one: 'é muito longo (máximo: 1 caracter)'
+        other: 'é muito longo (máximo: %{count} caracteres)'
+      too_short:
+        one: 'é muito curto (mínimo: 1 caracter)'
+        other: 'é muito curto (mínimo: %{count} caracteres)'
+      wrong_length:
+        one: não possui o tamanho esperado (1 caracter)
+        other: não possui o tamanho esperado (%{count} caracteres)
+      other_than: deve ser diferente de %{count}
+    template:
+      body: 'Por favor, verifique o(s) seguinte(s) campo(s):'
+      header:
+        one: 'Não foi possível salvar %{model}: 1 erro'
+        other: 'Não foi possível salvar %{model}: %{count} erros'
+  helpers:
+    select:
+      prompt: Por favor selecione
+    submit:
+      save: Salvar
+      cancel: Cancelar
+      create: Criar %{model}
+      submit: Salvar %{model}
+      update: Atualizar %{model}
+      destroy: "Excluir %{model}..."
+    delete:
+      title: "Excluir %{model}"
+      description: "Lorem ipsum dolor sit %{model}, consectetur adipiscing elit."
+    activate:
+      title: "Ativar %{model}"
+      description: "Lorem ipsum dolor sit %{model}, consectetur adipiscing elit."
+    action:
+      created: '%{model} foi criado com sucesso.'
+      updated: '%{model} foi atualizado com sucesso.'
+      destroyed: '%{model} foi excluido com sucesso.'
+  number:
+    currency:
+      format:
+        delimiter: "."
+        format: "%u %n"
+        precision: 2
+        separator: ","
+        significant: false
+        strip_insignificant_zeros: false
+        unit: R$
+    format:
+      delimiter: "."
+      precision: 3
+      separator: ","
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion:
+            one: bilhão
+            other: bilhões
+          million:
+            one: milhão
+            other: milhões
+          quadrillion:
+            one: quatrilhão
+            other: quatrilhões
+          thousand: mil
+          trillion:
+            one: trilhão
+            other: trilhões
+          unit: ''
+      format:
+        delimiter: "."
+        precision: 2
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: "."
+        format: "%n%"
+    precision:
+      format:
+        delimiter: "."
+  support:
+    array:
+      last_word_connector: " e "
+      two_words_connector: " e "
+      words_connector: ", "
+  time:
+    am: ''
+    formats:
+      default: "%a, %d de %B de %Y, %H:%M:%S %z"
+      long: "%d de %B de %Y, %H:%M"
+      short: "%d de %B, %H:%M"
+    pm: ''
+  will_paginate:
+    next_label: "Próximo"
+    previous_label: "Anterior"

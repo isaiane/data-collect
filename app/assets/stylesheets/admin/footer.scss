@@ -1,0 +1,28 @@
+@import "../global";
+footer#footer-admin {
+	position: absolute;
+  bottom: 0;
+  width: 100%;
+	margin: 0;
+	padding: 10px 0;
+	color: darken($shadow, 30%);
+	text-align: left;
+	border-top: 1px solid $shadow;
+	background: $color-bg;
+	.btn.btn-primary {text-decoration: none}
+	.btn.btn-link {
+		color: darken($shadow, 30%);
+		text-decoration: none;
+		&:hover {color: darken($shadow, 45%);}
+	}
+}
+
+@media (max-width: 768px) {
+	footer#footer-admin {
+		position: relative;
+		bottom: auto;
+		.text-right,
+		& {text-align: center;}
+		.text-right {margin-top: 20px;}
+	}
+}

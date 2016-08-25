@@ -12,5 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui/sortable
+//= require jquery-ui/effect-highlight
+//= require rails.validations
+//= require bootstrap-sprockets
 //= require turbolinks
+//= require jquery.mask
+//= require jquery.maskMoney.min
+//= require jquery.Jcrop
+//= require jquery.vide
+//= require toastr
 //= require_tree .

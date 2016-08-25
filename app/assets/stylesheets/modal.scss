@@ -1,0 +1,301 @@
+@import 'global';
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background: hsla(0, 0%, 0%, .7);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .5s;
+
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+	.dark-side {
+		height: 100%;
+		width: 100%;
+	}
+  &.admin {background: rgba(darken($color-1th, 20%) / 1.25, 0.9);}
+}
+.head-modal {
+  h4 {
+    color: $color-1th;
+    font-size: 18px;
+    font-weight: $font-semi-bold;
+    border-left: 4px solid $color-1th;
+    padding: 10px 15px 10px 10px;
+    margin: 0 0 5px;
+    line-height: 1.2em;
+    i {
+      font-weight: normal;
+      font-size: 1.2em;
+    }
+  }
+  p {
+    font-size: $font-small;
+    line-height: 1.2em;
+    padding: 0 15px;
+    color: $color-4th;
+  }
+}
+.content-modal {
+  position: relative;
+  padding: 20px 0 15px;
+  overflow: hidden;
+  display: block;
+  z-index: 1;
+  @include afTransition;
+  form {
+    .call-modal {
+      padding: 0 15px;
+      margin-top: 30px;
+      display: block;
+      font-size: $font-wee;
+      color: $color-4th;
+      opacity: 0.75;
+      text-decoration: underline;
+      &:hover {
+        opacity: 1;
+      }
+    }
+    .form-group {
+      padding: 0 15px;
+      p {
+        line-height: 0.65em;
+        margin: 5px 0 0;
+      }
+      small {
+        font-size: $font-tiny;
+        color: $color-4th;
+        line-height: 1.2em;
+      }
+      .btn-pretty {
+        width: 100%;
+        background: lighten($color-1th, 3%);
+        border: 1px solid darken($color-1th, 1%);
+        border-top: 1px solid lighten($color-1th, 15%);
+        -webkit-box-shadow: 0px 2px 0 darken($color-1th, 5%), 2px 4px 6px rgba(darken($color-1th, 2%), 0.75);
+        -moz-box-shadow: 0px 2px 0 darken($color-1th, 5%), 2px 4px 6px rgba(darken($color-1th, 2%), 0.75);
+        -ms-box-shadow: 0px 2px 0 darken($color-1th, 5%), 2px 4px 6px rgba(darken($color-1th, 2%), 0.75);
+        -o-box-shadow: 0px 2px 0 darken($color-1th, 5%), 2px 4px 6px rgba(darken($color-1th, 2%), 0.75);
+        box-shadow: 0px 2px 0 darken($color-1th, 5%), 2px 4px 6px rgba(darken($color-1th, 2%), 0.75);
+        font-weight: $font-semi-bold;
+        transition: all 150ms linear;
+        color: $color-8th;
+        border-radius: 4px;
+        padding: 8px 0;
+        margin-top: 10px;
+        &:visited {
+          background: lighten($color-1th, 5%);
+          border: 1px solid darken($color-1th, 1%);
+          border-top: 1px solid lighten($color-1th, 15%);
+          -webkit-box-shadow: 0px 2px 0 darken($color-1th, 5%), 2px 4px 6px rgba(darken($color-1th, 2%), 0.75);
+          -moz-box-shadow: 0px 2px 0 darken($color-1th, 5%), 2px 4px 6px rgba(darken($color-1th, 2%), 0.75);
+          -ms-box-shadow: 0px 2px 0 darken($color-1th, 5%), 2px 4px 6px rgba(darken($color-1th, 2%), 0.75);
+          -o-box-shadow: 0px 2px 0 darken($color-1th, 5%), 2px 4px 6px rgba(darken($color-1th, 2%), 0.75);
+          box-shadow: 0px 2px 0 darken($color-1th, 5%), 2px 4px 6px rgba(darken($color-1th, 2%), 0.75);
+          font-weight: $font-semi-bold;
+          transition: all 150ms linear;
+          color: $color-8th;
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+          background: darken($color-1th, 5%);
+          border: 1px solid darken($color-1th, 3%);
+          border-top: 1px solid lighten($color-1th, 15%);
+          -webkit-box-shadow: 1px 1px 2px #fff;
+          -moz-box-shadow: 1px 1px 2px #fff;
+          -ms-box-shadow: 1px 1px 2px #fff;
+          -o-box-shadow: 1px 1px 2px #fff;
+          box-shadow: 1px 1px 2px #fff;
+          color: rgba($color-8th, 0.5);
+          text-decoration: none;
+          -webkit-text-shadow: -1px -1px 0 darken($color-1th, 9.5%);
+          -moz-text-shadow: -1px -1px 0 darken($color-1th, 9.5%);
+          -ms-text-shadow: -1px -1px 0 darken($color-1th, 9.5%);
+          -o-text-shadow: -1px -1px 0 darken($color-1th, 9.5%);
+          text-shadow: -1px -1px 0 darken($color-1th, 9.5%);
+          transition: all 250ms linear;
+        }
+
+      }
+    }
+  }
+}
+// Modal
+.modal {
+  display: block;
+  background: #fff;
+  position: absolute;
+  z-index: 9999;
+  top: 50%;
+  height: 26rem;
+  margin-top: -13rem;
+  left: 50%;
+  width: 32rem;
+  margin-left: -16rem;
+  border-radius: 3px;
+  font-size: 1.5rem;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-transform: scale3d(1.2, 1.2, 1);
+  -moz-transform: scale3d(1.2, 1.2, 1);
+  -ms-transform: scale3d(1.2, 1.2, 1);
+  -o-transform: scale3d(1.2, 1.2, 1);
+  transform: scale3d(1.2, 1.2, 1);
+  -webkit-transition: opacity .5s, transform .5s;
+  -moz-transition: opacity .5s, transform .5s;
+  -ms-transition: opacity .5s, transform .5s;
+  -o-transition: opacity .5s, transform .5s;
+  transition: opacity .5s, transform .5s;
+  .close-modal:not(.btn) {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    opacity: 0;
+    z-index: 100;
+    pointer-events: none;
+    -webkit-transition: opacity .5s, transform .45s;
+    -moz-transition: opacity .5s, transform .45s;
+    -ms-transition: opacity .5s, transform .45s;
+    -o-transition: opacity .5s, transform .45s;
+    transition: opacity .5s, transform .45s;
+    -webkit-transition-delay: .45s;
+    -moz-transition-delay: .45s;
+    -ms-transition-delay: .45s;
+    -o-transition-delay: .45s;
+    transition-delay: .45s;
+  }
+  &.active {
+    pointer-events: auto;
+    opacity: 1;
+    transform: scale(1);
+    display: block;
+
+    .close-modal:not(.btn) {
+      pointer-events: auto;
+      transform: translate3d(0, 10px, 0);
+      opacity: 1;
+    }
+  }
+  .store-apps {
+    text-align: center;
+    .store-logos {
+      padding: 0 15px;
+      p {
+        padding: 0;
+        display: inline;
+      }
+      .logo {
+        a {
+          display: inline-block;
+          height: 30px;
+          width: 90px;
+          background:{
+            repeat: no-repeat;
+            position: left;
+            size: contain;
+          }
+        }
+        .logo_play_store { background-image: url('/assets/store/play_store.png');}
+        .logo_app_store { background-image: url('/assets/store/app_store.png');}
+      }
+    }
+  }
+}
+
+.options-modal {
+  background: none;
+  width: 100%;
+  max-width: 72em;
+  left: 50%;
+  margin-left: -36em;
+  .option-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+  }
+  .option-body {
+    display: inline-block;
+    margin: 0 15px;
+    &:nth-child(1) .option-icon {background-color: $color1;}
+    &:nth-child(2) .option-icon {background-color: $color2;}
+    &:nth-child(3) .option-icon {background-color: $color3;}
+    &:nth-child(4) .option-icon {background-color: $color4;}
+    &:nth-child(5) .option-icon {background-color: $color5;}
+    &:nth-child(6) .option-icon {background-color: $color6;}
+  }
+  .option-icon {
+    &:first-letter {
+      color: $color-8th;
+      font-size: 42px;
+    }
+    margin: 0;
+    font-size: 0;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    border-radius: 100px;
+    @include afTransition(0.1s);
+  }
+  a {
+    text-decoration: none;
+    &:hover {
+      .option-icon {
+        transform: scale(1.1);
+      }
+    }
+  }
+  span {
+    display: block;
+    margin: 10px 0 0;
+    color: $color-8th;
+    @include afTransition;
+  }
+}
+
+// Mobile
+@media only screen and (max-height: 500px) {
+  #privacy-policy {
+    height: 700px;
+    .content-modal {
+      height: 100%;
+    }
+  }
+}
+@media only screen and (max-width: 40em) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  .overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+  }
+  .modal,
+  #privacy-policy {
+    width: 100%;
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+    margin: 0;
+    top: 0;
+    left: 0;
+    border-radius: 0;
+    font-size: 1.313rem;
+  }
+  #privacy-policy {
+    height: 700px;
+  }
+}

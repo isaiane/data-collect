@@ -1,0 +1,18 @@
+<h2>Mudar sua senha</h2>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put,:id => "form_login", class: "form" }) do |f| %>
+  <%= devise_error_messages! %>
+  <%= f.hidden_field :reset_password_token %>
+  <%= f.password_field :password, autofocus: true, placeholder: "Senha", autocomplete: "off" %>
+  <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+  <% end %>
+  <%= f.password_field :password_confirmation, placeholder: "Confirmar senha", autocomplete: "off" %>
+  <%= button_tag(type: 'submit', class: "btn btn-primary btn-block btn-login") do%>
+    Login
+  <% end %>
+<% end %>
+
+<div class="login-bottom-links">
+<%= render "admin/users/shared/links" %>
+</div>

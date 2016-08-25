@@ -1,0 +1,82 @@
+<section class="col-xs-12 col-sm-6">
+	<div class="row">
+		<h6><%= t(".account_info")%></h6>
+		<div class="box-content">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="col-xs-12 col-sm-3">
+							<span class="big">
+					      <% unless @account.profile_image? %>
+					        <span class="usericon">
+					        	<%= @account.slug.upcase %>
+					        </span>
+				        <% else %>
+				        	<span class="userimg">
+				          	<img src="<%= @account.profile_image_url(:thumb)%>" alt="<%= @account.name %>">
+				          </span>
+				        <% end %>
+				      </span>
+						</div>
+						<div class="col-xs-12 col-sm-9">
+							<h3>
+								<%= @account.name %>
+								<%= @account.active ? '<i class="fa fa-circle active"></i>'.html_safe : '<i class="fa fa-circle"></i>'.html_safe %>
+							</h3>
+							<h5><%= t(".contractor")%></h5>
+							<p>
+								<%= @account.name_contract_manager if @account.name_contract_manager  != "" %><% if @account.phone_contract_manager != "" %>. <%= t("form.phone") %>: <%= @account.phone_contract_manager %><% end %><br>
+								<%= @account.email_contract_manager if @account.email_contract_manager  != "" %>
+							</p>
+							<ul class="summary-items">
+								<li data-toggle="tooltip" data-placement="bottom" title="<%= @account.users_count > 1 ? t("user").pluralize(I18n.locale.to_sym) : t("user")%>"><%= @account.users_count %> <i class="fa fa-user"></i></li>
+								<li data-toggle="tooltip" data-placement="bottom" title="<%= @account.dealerships_count > 1 ? t("dealership").pluralize(I18n.locale.to_sym) : t("dealership")%>"><%= @account.dealerships_count %> <i class="fa fa-building"></i></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+		</div>
+	</div>
+
+	<% if @account.users.any? %>
+		<div class="row">
+			<h6>
+				<%= pluralize("Conta") %> <%= "(#{@account.users_count})" if @account.users_count > 5 %>
+				<%= link_to users_path do %>
+					<% if @account.users_count > 5 %>All Users <i class="fa fa-arrow-circle-o-right"></i><% end %>
+				<% end %>
+			</h6>
+			<div class="box-content listing">
+				<div class="grid grid-list">
+		      <div id="item-list">
+		        <%= render "users" %>
+		      </div>
+		    </div>
+			</div>
+		</div>
+	<% end %>
+
+	<% if @account.dealerships.any? %>
+		<div class="row">
+			<h6>
+				<%= t('pluralize.messages', :count => @account.dealerships_count , :model => @account.dealerships_count > 1 ? t('dealership').pluralize(I18n.locale.to_sym) : t('dealership')) %>
+				<%= link_to account_dealerships_path(@account) do %>
+					<% if @account.dealerships_count > 5 %> <%= t("pluralize.all.female", :model => t("dealership")).pluralize(I18n.locale.to_sym) %> <i class="fa fa-arrow-circle-o-right"></i><% end %>
+				<% end %>
+			</h6>
+			<div class="box-content listing">
+				<div class="grid grid-list">
+		      <div id="item-list">
+		        <%= render "dealerships" %>
+		      </div>
+		    </div>
+			</div>
+		</div>
+	<% end %>
+</section>
+
+<section class="col-xs-12 col-sm-6">
+	<div class="row">
+		<h6><%= t("form.latest_activities")%></h6>
+		<div class="box-content"></div>
+	</div>
+</section>

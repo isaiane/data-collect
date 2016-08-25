@@ -1,0 +1,499 @@
+@import "../global";
+
+.listing-box {
+  padding-top: 40px;
+  .panel-default {
+    & > .panel-heading {background-color: $color-7th;}
+  }
+}
+.listing {
+  background-color: $color-bg;
+  padding-top: 1em;
+  .item_list {
+    padding: 1.5em 0 0;
+  }
+  .no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+  }
+  ::-webkit-input-placeholder { color: $color-4th; }
+  :-moz-placeholder {  color: $color-4th; }
+  ::-moz-placeholder { color: $color-4th; }
+  :-ms-input-placeholder { color: $color-4th; }
+
+  .fa {
+    font-size: $font-middle;
+    line-height: 1.75;
+  }
+  .ctrls {
+    margin-bottom: 1em;
+    &:after {
+      content: '';
+      clear: both;
+      display: block;
+    }
+  }
+  .filter {
+    float: left;
+    width: 100%;
+    padding-left: 1.5em;
+    .fa {
+      color: $color-4th;
+      position: absolute;
+      margin-left: -1em;
+    }
+    input {
+      width: 100%;
+      vertical-align: top;
+      height: 2em;
+      border: none;
+      background: $bg;
+      font-size: 16px;
+      font-weight: 300;
+      color: $color-4th;
+      outline: none;
+      padding: 0 0.5em;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      -ms-box-shadow: none;
+      -o-box-shadow: none;
+      box-shadow: none;
+    }
+  }
+  .grid-toggle {
+    cursor: pointer;
+    @extend .no-select;
+    float: right;
+    a {
+      span { color: $color-4th; }
+      span:first-child { color: $body; margin-right: 12px; }
+      &.active {
+        span:first-child { color: $color-4th; }
+        span:last-child { color: $body; }
+      }
+    }
+  }
+  .btn5{
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: $color-4th;
+  }
+  ul {list-style: none;}
+  div.grid {
+    box-sizing:border-box;
+    overflow: hidden;
+    .grid-body ul {
+      line-height:5em;
+      -webkit-transition: all ease-in-out 0.4s;
+      -moz-transition: all ease-in-out 0.4s;
+      -ms-transition: all ease-in-out 0.4s;
+      -o-transition: all ease-in-out 0.4s;
+      transition: all ease-in-out 0.4s;
+      li {
+        span {
+          display: inline-block;
+          line-height: normal;
+          vertical-align: middle;
+          &.grid-icon {
+            color: $gray2;
+          }
+          &.grid-title a {
+            font-size: $font-main;
+            font-weight: 500;
+            color: $body;
+            text-decoration: none;
+            &:hover { text-decoration: underline; }
+          }
+          &.progress-log {
+            display: inline-block;
+            position: relative;
+            height: 3px;
+            width: 100px;
+            border-radius: 100px;
+            background: $color-6th;
+            overflow: hidden;
+            margin: 3px 5px 0 0;
+            & ~ span {color: $brand-success;}
+            i {
+              border-radius: 100px;
+              height: 100%;
+              background: $brand-success;
+              position: absolute;
+              top: 0;
+              left: 0;
+            }
+          }
+          &.grid-user {
+            .fa {
+              font-size: $font-wee;
+              &.fa-circle {color: $brand-danger;}
+              &.fa-circle.active {color: $brand-success;}
+            }
+          }
+          &.grid-usericon,
+          &.grid-userimg {
+            &:first-letter {
+              color: white;
+              font-size: 14px;
+            }
+            margin-right: 12px;
+            font-size: 0;
+            width: 36px;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+            background: $primary;
+            border-radius: 100px;
+            &.grid-icon-2 {background-color: $color2;}
+            &.grid-icon-3 {background-color: $color3;}
+            &.grid-icon-4 {background-color: $color4;}
+            &.grid-icon-5 {background-color: $color5;}
+            &.grid-icon-6 {background-color: $color6;}
+          }
+          &.big {
+            .grid-usericon,
+            .grid-userimg {
+              &:first-letter {
+                color: white;
+                font-size: 20px;
+              }
+              margin-right: 12px;
+              font-size: 0;
+              width: 60px;
+              height: 60px;
+              line-height: 60px;
+            }
+          }
+          &.small {
+            margin: 0;
+            .grid-usericon,
+            .grid-userimg {
+              &:first-letter {
+                color: white;
+                font-size: 10px;
+              }
+              margin-right: 5px;
+              font-size: 0;
+              width: 24px;
+              height: 24px;
+              line-height: 24px;
+            }
+            .grid-title a {font-size: 12px;}
+          }
+          &.wee {
+            .grid-usericon,
+            .grid-userimg {
+              &:first-letter {
+                color: white;
+                font-size: 10px;
+              }
+              margin-right: 5px;
+              font-size: 0;
+              width: 20px;
+              height: 20px;
+              line-height: 20px;
+            }
+            .grid-title a {font-size: 12px;}
+          }
+          &.grid-userimg {
+            overflow: hidden;
+            background: none;
+            img {
+              border-radius: 100px;
+              width: 100%;
+              height: auto;
+            }
+          }
+          &.grid-date, &.grid-user {
+            color: $color-4th;
+            font-size: 14px;
+            .box-avatar .img-avatar {margin: 0;}
+          }
+          a .fa {
+            color: $color-4th;
+          }
+        }
+      }
+    }
+  }
+  .grid.grid-thumb {
+    &:after {
+      content:'';
+      display: block;
+      clear: both;
+    }
+    .grid-head { display: none; }
+    .grid-body {
+      width: 50%;
+      float: left;
+      box-sizing: border-box;
+      margin-bottom: 2em;
+      &:nth-child(even) { padding-right: 1em; }
+      &:nth-child(odd) { padding-left: 1em; }
+      ul {
+        box-sizing: border-box;
+        background: white;
+        border: 1px solid $shadow;
+        padding: 1em 1.5em .75em;
+        border-radius: 5px;
+        float: left;
+        width: 100%;
+        &:after {
+          content:'';
+          display: block;
+          clear: both;
+        }
+        li {
+          position: relative;
+          span {
+            &.grid-icon {
+              display: block;
+              font-size: 56px;
+              margin: 0 0 12px;
+            }
+            &.grid-title {
+              display: block;
+              margin-bottom: 1em;
+            }
+            &.grid-user {
+              .grid-usericon {
+                position: absolute;
+                left: 0;
+                bottom: -37px;
+              }
+              margin-bottom: 2px;
+            }
+            &.grid-date {
+              display: block;
+            }
+            &.grid-options {
+              float: right;
+            }
+          }
+        }
+      }
+    }
+  }
+  div.grid.grid-list {
+    margin-bottom: 60px;
+    background: white;
+    border: 1px solid $shadow;
+    padding: 0 2em;
+    border-radius: 5px;
+    .grid-items {margin-bottom: 20px;}
+    li.grid-body {
+      border-bottom: 1px solid $shadow;
+      &:last-child { border-bottom: none; }
+    }
+    .grid-head ul {
+      &:after {
+        content:'';
+        display: block;
+        clear: both;
+      }
+      li {
+        @extend .no-select;
+        font-size: 16px;
+        border: none;
+        text-align: left;
+        padding: 2em 0 1em;
+        float: left;
+        a, span {
+          cursor: pointer;
+          color: $primary;
+          font-weight: 600;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+        span {
+          color: $color-5th;
+          cursor: default;
+          &:hover {text-decoration: none;}
+        }
+      }
+    }
+    .grid-body ul {
+      &:after {
+        content:'';
+        display: block;
+        clear: both;
+      }
+      li {
+        border: none;
+        text-align: left;
+        height: 5em;
+        line-height: 5em;
+        padding: 0;
+        float: left;
+        span {
+          &.grid-icon {
+            margin-right: 0.5em;
+          }
+        }
+        &.progress-log {text-align: center;}
+      }
+    }
+  }
+  &.box-content {
+    div.grid.grid-list {
+      border: none;
+      padding: 0 20px;
+      margin: 0 0 5px;
+      .grid-items {margin-bottom: 0;}
+      .grid-body {
+        border: none;
+        ul {
+          &:after {
+            content:'';
+            display: block;
+            clear: both;
+          }
+          li {
+            position: relative;
+            border: none;
+            text-align: left;
+            height: 3.5em;
+            line-height: 3.25em;
+            padding: 0;
+            float: left;
+            width: 100%;
+            span {
+              padding: 0;
+              &.grid-icon {
+                margin-right: 0.5em;
+              }
+              &.grid-usericon,
+              &.grid-userimg {
+                margin: 0 5px 0 0;
+              }
+              .grid-title {
+                a {font-weight: $font-bold;}
+                i {
+                  width: 12px;
+                  display: inline-block;
+                  height: 8px;
+                  position: relative;
+                  &:after {
+                    display: block;
+                    content: "";
+                    width: 4px;
+                    height: 4px;
+                    background: $color-4th;
+                    border-radius: 100%;
+                    position: absolute;
+                    top: 3px;
+                    right: 5px;
+                  }
+                }
+              }
+              .grid-text {
+                font-size: $font-wee;
+                margin: 0;
+              }
+            }
+            .grid-info {
+              position: absolute;
+              right: 0;
+              font-size: 11px;
+              top: 15px;
+              color: lighten($color-4th, 5%);
+              b {
+                color: $color-3th;
+                font-size: 10px;
+                &:before {margin-right: 3px;}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  li.clear-fix {
+    display: block;
+    clear: both;
+  }
+  li.pagination {
+    padding: 1em 0 2em;
+    p {
+      font-size: 14px;
+    }
+    ul.pager {
+      margin: 2em 0;
+      li {
+        display: inline;
+        &:first-child { margin-right: 1em; }
+        a {
+          color: $primary;
+          text-decoration: none;
+          padding: 0.5em 1.5em;
+          border: 1px solid $primary;
+          border-radius: 100px;
+        }
+      }
+    }
+  }
+}
+
+#users {
+  &.listing {
+    div.grid.grid-list {
+      .grid-body ul {
+        li {
+          &:first-child { text-align: left; width: 30%; }
+          &:nth-child(2) { width: 40%; }
+          &:nth-child(3) { width: 15%; }
+          &:last-child { text-align: center; width: 15%; }
+        }
+      }
+    }
+  }
+}
+
+#dealerships {
+  &.listing {
+    div.grid.grid-list {
+      .grid-body ul {
+        li {
+          &:first-child { text-align: left; width: 30%; }
+          &:nth-child(2) { width: 40%; }
+          &:nth-child(3) { width: 15%; }
+          &:last-child { text-align: center; width: 15%; }
+        }
+      }
+    }
+  }
+}
+
+#accounts {
+  &.listing {
+    div.grid.grid-list {
+      .grid-body ul {
+        li {
+          .auto-favorite {
+            font-size: 14px;
+            margin: 0;
+            line-height: 7.25em;
+          }
+          &:first-child { text-align: left; width: 30%; }
+          &:nth-child(2) { width: 35%; }
+          &:nth-child(3) { width: 15%; }
+          &:nth-child(4) { width: 5%; }
+          &:last-child { text-align: center; width: 15%; }
+        }
+      }
+    }
+    div.grid.grid-list {
+      .grid-body ul {
+        li {
+          height: 6.5em;
+          line-height: 6.5em;
+        }
+      }
+    }
+  }
+}

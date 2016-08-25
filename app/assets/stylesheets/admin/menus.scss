@@ -1,0 +1,82 @@
+@import "global";
+
+.page-nav {
+	border-bottom: 1px solid #eeeeee;
+	.nav-pills > li > a {
+		padding: 15px 15px;
+		color: $color-4th;
+		border-radius: 0;
+		margin-bottom: -1px;
+		border-bottom: 1px solid rgba($color-1th, 0);
+		@include afTransition;
+		&:hover,
+		&:focus {
+			background: none;
+			border-bottom: 1px solid rgba($color-1th, 0.5);
+		}
+		&.active,
+		&:active {
+			color: $color-1th;
+			border-bottom: 1px solid $color-1th;
+		}
+	}
+}
+.auto-aside-nav {
+	font-size: $font-small;
+	&.panel-group {
+		.panel {
+			border: none;
+			-webkit-box-shadow: none;
+			-moz-box-shadow: none;
+			-ms-box-shadow: none;
+			-o-box-shadow: none;
+			box-shadow: none;
+		}
+	}
+	.panel-title {
+		font-size: 1em;
+		color: $color-4th;
+		padding: 2px 0;
+		a {
+			padding-left: 20px;
+			text-decoration: none;
+			border-left: 1px solid rgba($color-1th, 0);
+			@include afTransition(0.25s);
+			&:hover {
+				padding-left: 15px;
+				color: $color-1th;
+				border-left: 1px solid $color-1th;
+			}
+		}
+		[aria-expanded="true"] {
+			padding-left: 10px;
+			font-weight: $font-bold;
+			color: $color-1th;
+			border-left: 1px solid $color-1th;
+			&:hover {
+				padding-left: 10px;
+				color: $color-1th;
+			}
+		}
+	}
+	.panel-default {
+		& > .panel-heading {
+			padding: 0;
+			background: none;
+			border: none;
+			& + .panel-collapse {
+				&	> .panel-body {
+					border: none;
+					padding: 10px 0 10px 25px;
+					a {
+						display: block;
+						color: $color-4th;
+						text-decoration: none;
+						padding: 1px 0;
+						&:hover {color: $color-1th;}
+					}
+				}
+			}
+		}
+	}
+}

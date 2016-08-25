@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Autódromo</title>
+		<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link rel="shortcut icon" href="/assets/admin/favicon.png">
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<header id="header-admin">
+			<nav class="navbar navbar-default">
+			  <div class="container-fluid">
+				  <div class="container">
+				  	<div class="row">
+						  <div class="col-xs-6 col-sm-2">
+						    <div class="navbar-header">
+						      <a class="navbar-brand" href="/admin/dashboard">
+						        <img alt="Brand" src="/assets/admin/logo.png" alt="AutoForce">
+						      </a>
+						    </div>
+						  </div>
+						  <div class="col-xs-6 col-sm-2 col-sm-push-8">
+								<ul class="nav navbar-nav navbar-right">
+					        <li class="dropdown btn-dropdown-profile-icon dropdown-acordion-menu">
+				          	<a href="#" class="dropdown-toggle icon-avatar grid-icon-<%= current_user.rule %>" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+			          			<span><%= current_user.slug.upcase %></span>
+				          	</a>
+					          <ul id="accordion2" class="accordion-menu">
+										  <li class="profile-info">
+											  <%= link_to current_user do%>
+										      <span class="menu-usericon menu-icon-<%= current_user.rule %>"><%= current_user.slug.upcase %></span>
+									        <strong><%= current_user.name %></strong>
+											  	<span><%= current_user.email %></span>
+											  <% end %>
+										  </li>
+										  <li><div class="no-accordion-link"><i class="fa fa-tachometer"></i><%= link_to t("admin.dashboard.index.title"), dashboard_index_path %></a></div>
+										  <% if can? :registration, User.new %>
+										  	<li><div class="no-accordion-link"><i class="fa fa-flask"></i><%= link_to t("admin.resources.index.title"), resources_path %></div>
+										  <% end %>
+										  <% if can? :read, User.new %>
+											  <li>
+											  	<div class="no-accordion-link">
+											  		<i class="fa fa-users"></i>
+													  <%= link_to t('user').pluralize(I18n.locale.to_sym), users_path %>
+												  </div>
+											  </li>
+											<% end %>
+											<li><div class="no-accordion-link"><i class="fa fa-sign-out"></i><a href="/logout"><%= t("admin.session.logout")%></a></div>
+										</ul>
+					        </li>
+					      </ul>
+						  </div>
+						  <div class="col-xs-12 col-sm-8 col-sm-pull-2"></div>
+				  	</div>
+				  </div>
+			  </div>
+			</nav>
+		</header>
+
+		<%= yield %>
+
+		<% if notice %>
+			<div id="toast-container" class="toast-top-right">
+				<div class="toast toast-success">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<%= notice.html_safe %>
+				</div>
+			</div>
+		<% end %>
+		<% if alert %>
+			<div id="toast-container">
+				<div class="toast toast-warning">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<%= alert.html_safe %>
+				</div>
+			</div>
+		<% end %>
+		<% if alert %>
+			<div id="toast-container">
+				<div class="toast toast-warning">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<%= alert.html_safe %>
+				</div>
+			</div>
+		<% end %>
+
+		<footer id="footer-admin">
+			<div class="container-fluid">
+			  <div class="row">
+				  <div class="col-xs-12 col-sm-6">
+					  <a href="http://www.autoforce.com.br/" class="btn btn-link btn-xs" target="_black">autoforce.com.br</a>
+					  <a href="#" class="btn btn-link btn-xs" target="_black">Blog</a>
+					  <a href="#" class="btn btn-primary btn-xs" target="_black" data-toggle="tooltip" data-placement="top" data-title="Equipe de Suporte">Pitstop</a>
+					  <a href="#" class="btn btn-link btn-xs link-featured" target="_black">Universidade de Pilotos</a>
+				  </div>
+				  <div class="col-xs-12 col-sm-6 text-right">
+					  <a href="http://www.autoforce.com.br/" class="btn btn-link btn-xs" target="_black">Termos de Uso</a>
+					  <a href="#" class="btn btn-link btn-xs" target="_black">Privacidade</a>
+					  <a href="http://www.autoforce.com.br/" class="btn btn-link btn-xs link-featured">© 2016 <strong>Autodrómo</strong> by AutoForce.</a>
+				  </div>
+			  </div>
+			</div>
+		</footer>
+  	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	</body>
+</html>

@@ -1,0 +1,21 @@
+<ul class="grid-items">
+	<% @categories.take(5).each do |category| %>
+		<% if can? :read, category %>
+			<li class="grid-body">
+			  <ul>
+			    <li>
+			      <span class="grid-user small">
+			        <span class="grid-usericon grid-icon-4">
+			        	<%= category.name.upcase %>
+			        </span>
+			      	<span class="grid-title">
+			      		<%= link_to category.name, categories_path %>
+			      		<p class="grid-text"><%= category.type.name %></p>
+			      	</span>
+			      </span>
+			    </li>
+			  </ul>
+			</li>
+		<% end %>
+	<% end %>
+</ul>

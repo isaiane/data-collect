@@ -1,0 +1,234 @@
+@import "../global";
+$custom-easing: cubic-bezier(1, .1, 0, 0.9);
+body.dragging, body.dragging * {cursor: move !important;}
+  .dragged {
+  position: absolute;
+  opacity: 0.5;
+  z-index: 2000;
+}
+.sortable {
+  list-style: none;
+  .icon-move {
+    position: absolute;
+    line-height: 2.5em;
+    left: 5px;
+    color: $color-5th;
+    cursor: move;
+    z-index: 999;
+    @include afTransition(0.15s);
+    &:hover {color: $color-4th;}
+  }
+  [class^="col-"] {padding-right: 0}
+  .form-group .icon-move {
+    left: -10px;
+    cursor: move;
+  }
+}
+label {
+  font-size: $font-small;
+  font-weight: $font-bold;
+  color: $color-4th;
+}
+.radio input[type="radio"],
+.radio-inline input[type="radio"],
+.checkbox input[type="checkbox"],
+.checkbox-inline input[type="checkbox"] {
+	margin: 2px 0 0;
+}
+.form-group {
+  position: relative;
+  small {color: lighten($color-4th, 10%);}
+  .form-control {color: $color-3th;}
+  .actions {
+    .btn,
+    button {margin-top: 0;}
+  }
+}
+.divider {
+  display: block;
+  width: 1px;
+  height: 60px;
+  float: left;
+  margin: 5px 20px;
+  border-left: 1px solid #ddd;
+}
+.separate-group {
+  position: relative;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left,rgba($color-6th, 1) 0,rgba($color-6th,.7) 10%,$color-6th 50%,rgba($color-6th,.7) 90%,rgba($color-6th,0) 100%);
+    background-image: -moz-linear-gradient(left,rgba($color-6th, 1) 0,rgba($color-6th,.7) 10%,$color-6th 50%,rgba($color-6th,.7) 90%,rgba($color-6th,0) 100%);
+    background-image: -ms-linear-gradient(left,rgba($color-6th, 1) 0,rgba($color-6th,.7) 10%,$color-6th 50%,rgba($color-6th,.7) 90%,rgba($color-6th,0) 100%);
+    background-image: linear-gradient(to right,rgba($color-6th, 1) 0,rgba($color-6th,.7) 10%,$color-6th 50%,rgba($color-6th,.7) 90%,rgba($color-6th,0) 100%);
+  }
+}
+ol.separate-group {
+  margin-bottom: 0;
+  &:nth-child(n):after {display: none;}
+  &:last-child {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    &:after {display: block;}
+  }
+}
+.group-choice {
+	display: block;
+	overflow: hidden;
+	.radio + .radio,
+	.checkbox + .checkbox {
+		margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+	}
+	.radio,
+	.checkbox {
+		display: block;
+		float: left;
+		& > label {
+			display: table;
+			font-weight: $font-bold;
+	  	margin: 0 auto;
+			padding: 0;
+			padding-left: 0;
+	  	cursor: pointer;
+		}
+	}
+}
+input[type="checkbox"],
+input[type="radio"] {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+}
+input[type="radio"] + label {
+	padding-left: 0;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  text-indent: -9999px;
+  background: darken($color-5th, 8%);
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  cursor: pointer;
+  -webkit-transition: all 0.3s $custom-easing;
+  -moz-transition: all 0.3s $custom-easing;
+  -ms-transition: all 0.3s $custom-easing;
+  -o-transition: all 0.3s $custom-easing;
+  transition: all 0.3s $custom-easing;
+  &:before {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 10px;
+    width: 10px;
+    top: 50%;
+    left: 50%;
+    background: white;
+    border-radius: 100%;
+    box-shadow: 0 0 2px 2px rgba(0,0,0,0.1);
+    -webkit-transition: all 0.3s $custom-easing 0.1s;
+    -moz-transition: all 0.3s $custom-easing 0.1s;
+    -ms-transition: all 0.3s $custom-easing 0.1s;
+    -o-transition: all 0.3s $custom-easing 0.1s;
+    transition: all 0.3s $custom-easing 0.1s;
+    transform: translateZ(0) translate(-50%, -50%) scale(0);
+  }
+}
+input[type="radio"]:checked + label {
+  background: $color-1th;
+  &:before {
+    transform: translateZ(0) translate(-50%, -50%) scale(1);
+  }
+}
+input[type="checkbox"] + label {
+	padding-left: 0;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  text-indent: -9999px;
+  background: darken($color-5th, 8%);
+  width: 36px;
+  height: 10px;
+  border-radius: 100px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s $custom-easing;
+  -moz-transition: all 0.3s $custom-easing;
+  -ms-transition: all 0.3s $custom-easing;
+  -o-transition: all 0.3s $custom-easing;
+  transition: all 0.3s $custom-easing;
+  &:before {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: $color-1th;
+    border-radius: 100px;
+    -webkit-transition: all 0.3s $custom-easing 0.1s;
+    -moz-transition: all 0.3s $custom-easing 0.1s;
+    -ms-transition: all 0.3s $custom-easing 0.1s;
+    -o-transition: all 0.3s $custom-easing 0.1s;
+    transition: all 0.3s $custom-easing 0.1s;
+    transform: translateZ(0) scale(0);
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 5px;
+    display: block;
+    height: 12px;
+    width: 12px;
+    background: white;
+    border-radius: 100%;
+    box-shadow: 0 0 2px 1px rgba(0,0,0,0.2);
+    -webkit-transition: all 0.3s $custom-easing;
+    -moz-transition: all 0.3s $custom-easing;
+    -ms-transition: all 0.3s $custom-easing;
+    -o-transition: all 0.3s $custom-easing;
+    transition: all 0.3s $custom-easing;
+    transform: translateZ(0) translateX(0);
+  }
+}
+input[type="checkbox"]:checked + label {
+  background: $color-1th;
+  &:after {
+    left: calc(100% - 16px);
+    transform: translateZ(0);
+  }
+}
+input[type="checkbox"]:disabled + label {
+  opacity: 0.4;
+  cursor: default;
+}
+.help-block {
+  font-weight: normal;
+  font-size: $font-wee;
+}
+.panel-danger,
+.text-danger {
+  input[type="radio"]:checked + label {background: $brand-danger;}
+  input[type="checkbox"]:checked + label {background: $brand-success;}
+}
+
+.panel-success,
+.text-success {
+  input[type="radio"]:checked + label {background: $brand-success;}
+  input[type="checkbox"]:checked + label {background: $brand-success;}
+}
+.popover-title {font-size: $font-small;}
+.popover-content {font-size: $font-wee;}

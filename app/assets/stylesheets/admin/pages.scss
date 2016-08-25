@@ -1,0 +1,43 @@
+@import "../global";
+
+.page-header {
+	padding-top: 20px;
+	position: relative;
+	border: none;
+	background-color: $color-7th;
+	&.container-fluid {
+		margin: -20px 0 0;
+	}
+
+	& ~ .container-form {
+		padding-top: 40px;
+		background-color: $color-8th;
+	}
+}
+.page-title {
+	margin-top: 0;
+	color: $color-3th;
+	font-size: $font-middle;
+	i {
+		background-color: $color-8th;
+		color: $color-1th;
+		padding: 5px;
+		border: 1px solid;
+		border-radius: 3px;
+		margin-right: 5px;
+		width: 28px;
+    text-align: center;
+	}
+	span {
+		font-size: $font-tiny;
+    display: inline-block;
+    margin: 0 15px 0 10px;
+    position: relative;
+    &:before {
+    	margin-top: -10px;
+	    display: block;
+	    position: absolute;
+	    top: 50%;
+    }
+	}
+}

@@ -1,0 +1,60 @@
+<ul class="grid-items">
+	<% @accounts.each do |account| %>
+		<% if can? :read, account %>
+			<li class="grid-body">
+			  <ul>
+			    <li>
+			      <span class="grid-user big">
+			      	<%= account.active ? '<i class="fa fa-circle active"></i>'.html_safe : '<i class="fa fa-circle"></i>'.html_safe %>
+				      <% unless account.profile_image? %>
+				        <span class="grid-usericon">
+				        	<%= account.slug.upcase %>
+				        </span>
+			        <% else %>
+			        	<span class="grid-userimg">
+			          	<img src="<%= account.profile_image_url(:thumb)%>" alt="<%= account.name %>">
+			          </span>
+			        <% end %>
+			      	<span class="grid-title"><%= link_to account.name, account %></span>
+			      </span>
+			    </li>
+					<li>
+			    	<% if account.incomplete? %>
+					  	<span class="progress-log">
+					  		<i style="width: <%= account.incomplete? %>%;"></i>
+					  	</span>
+					  	<span><%= account.incomplete? %>%</span>
+						<% elsif account.account_headquarter.nil? == false %>
+							<span><%= account.account_headquarter.dealership.city_state %></span>
+						<% end %>
+					</li>
+			    <li>
+			      <span class="grid-date">
+			      	<%= distance_of_time_in_words(Time.now, account.updated_at, scope: 'datetime.distance_in_words') %>
+			      </span>
+			    </li>
+			    <li>
+				    <% if account.favorite %>
+				      <%= link_to account_path(account, "account[favorite]" => false), method: :put, class: "auto-favorite active" do %>
+							  <i class="fa"></i>
+							<% end %>
+						<% else %>
+						<%= link_to account_path(account, "account[favorite]" => true), method: :put, class: "auto-favorite" do %>
+							  <i class="fa"></i>
+							<% end %>
+						<% end %>
+				   </li>
+			    <li>
+			      <span class="grid-options">
+			      	<%= link_to account do %>
+			      		<span class="fa fa-ellipsis-h"></span>
+							<% end %>
+			      </span>
+			    </li>
+			  </ul>
+			</li>
+		<% end %>
+	<% end %>
+</ul>
+
+<%= will_paginate @accounts, renderer: BootstrapPagination::Rails %>

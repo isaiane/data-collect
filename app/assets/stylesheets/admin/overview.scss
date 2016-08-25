@@ -1,0 +1,116 @@
+@import "../global";
+
+.overview-main {
+	padding: 30px 0;
+	h6 {
+    font-size: $font-small;
+    a {float: right;}
+  }
+  section {
+    &:nth-child(even) > .row {margin-left: -5px;}
+    &:nth-child(odd) > .row {margin-right: -5px;}
+  }
+}
+.box-content {
+	background: white;
+	padding: 10px 0;
+  margin-bottom: 25px;
+  border: 1px solid $shadow;
+  border-radius: 5px;
+  h3 {
+  	color: $color-3th;
+  	font-size: $font-big;
+  	margin: 0 0 10px;
+  	&:after {
+  		display: block;
+	    content: "";
+	    width: 20px;
+	    background: $color-3th;
+	    height: 1px;
+	    margin-top: 10px;
+  	}
+  	.fa {
+  		font-size: 0.45em;
+	    position: absolute;
+	    margin: 10px 0 0 10px;
+	    color: $brand-danger;
+      &.active {color: $brand-success;}
+  	}
+  }
+  h5 {
+  	font-size: $font-middle;
+  	color: $color-3th;
+  	margin-bottom: 5px;
+  }
+  p {
+  	font-size: 11px;
+  	color: $color-4th;
+  	line-height: 1.2em;
+  }
+  span {
+    display: inline-block;
+    line-height: normal;
+    &.usericon,
+    &.userimg {
+      &:first-letter {
+        color: white;
+        font-size: 16px;
+      }
+      font-size: 0;
+      width: 36px;
+      height: 36px;
+      line-height: 36px;
+      text-align: center;
+      background: $primary;
+      border-radius: 100px;
+      &.icon-2 {background-color: $color2;}
+    }
+    &.big {
+      .usericon,
+      .userimg {
+        &:first-letter {
+          color: white;
+          font-size: 48px;
+        }
+        font-size: 0;
+        width: 115px;
+        height: 115px;
+        line-height: 115px;
+      }
+    }
+    &.small {
+      .usericon,
+      .userimg {
+        &:first-letter {
+          color: white;
+          font-size: 10px;
+        }
+        font-size: 0;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+      }
+      .title a {font-size: 12px;}
+    }
+    &.userimg {
+      overflow: hidden;
+      background: none;
+      img {
+        border-radius: 100px;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+  .summary-items {
+  	margin: 10px 0 0;
+  	padding: 0;
+  	list-style: none;
+  	color: lighten($color-4th, 10%);
+  	font-size: $font-small;
+    li {
+      display: inline-block;
+      margin-right: 10px;
+    }
+  }
+}

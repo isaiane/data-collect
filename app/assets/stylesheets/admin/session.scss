@@ -1,0 +1,118 @@
+@import "../global";
+* { box-sizing: border-box; margin: 0; padding:0; }
+html {
+  min-height: 100%;
+  background: none;
+  body#login-wrap {
+    background: $brand-primary;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+	footer {
+		margin: 30px;
+		text-align: center;
+		color: #fff;
+		p {font-size: 12px;}
+		a {
+			color: #fff;
+			text-decoration: underline;
+      &:hover {color: #fff;}
+		}
+	}
+  .logo {
+		margin: 40px 0;
+		padding: 0;
+		a {
+		  display: block;
+		  height: 75px;
+		  text-indent: -9000px;
+		  overflow: hidden;
+		  background:{
+				repeat: no-repeat;
+				position: center;
+				size: inherit;
+			}
+		}
+	}
+	.login-bottom-links {
+		text-align: center;
+		br {display: none;}
+		a {
+      font-size: 12px;
+      display: inline;
+      padding: 0 20px;
+      color: $brand-primary;
+      text-decoration: underline;
+      p{
+        padding-bottom: 10px;
+      }
+    }
+	}
+  .login-wrap {
+    position: relative;
+    margin: 0 auto;
+    background: #ecf0f1;
+    width: 100%;
+    max-width: 430px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0 1px 5px rgba(0,0,0,0.25);
+    -ms-box-shadow: 0 1px 5px rgba(0,0,0,0.25);
+    -o-box-shadow: 0 1px 5px rgba(0,0,0,0.25);
+    box-shadow: 0 1px 5px rgba(0,0,0,0.25);
+    padding: 40px;
+    h3 {
+      text-align: center;
+      font-weight: 100;
+      margin: 0 0 40px;
+      color: $brand-primary;
+    }
+    .form {
+      input,
+      input,
+      button.btn-primary {
+        width: 100%;
+        margin-bottom: 25px;
+        height: 40px;
+        border-radius: 5px;
+        outline: 0;
+        -moz-outline-style: none;
+      }
+      input {
+        border: 1px solid #bbb;
+        padding: 0 0 0 10px;
+        font-size: 14px;
+        &:focus {
+          border: 1px solid #3498db;
+        }
+      }
+      button.btn-primary {
+        background: $brand-primary;
+        border:none;
+        color: white;
+        font-size: 18px;
+      }
+      #toast-container {
+        position: relative;
+        & > div,
+        & > div:hover,
+        & > div:active,
+        & > div:visited,
+        & > div:focus {
+          width: 100%;
+          margin-bottom: 25px;
+          -webkit-box-shadow: none !important;
+          -moz-box-shadow: none !important;
+          -ms-box-shadow: none !important;
+          -o-box-shadow: none !important;
+          box-shadow: none !important;
+          outline: none;
+        }
+      }
+    }
+  }
+}
+.get-out {
+  @include afAnimation(fadeOut);
+}

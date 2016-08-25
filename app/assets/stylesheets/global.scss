@@ -1,0 +1,152 @@
+$font-family-sans-serif:  'Open Sans', sans-serif;
+$font-family-serif:       'Open Sans', sans-serif;
+$brand-primary: #00639E;
+$brand-success: #5cb85c;
+$brand-info:    #5bc0de;
+$brand-warning: #f0ad4e;
+$brand-danger:  #d9534f;
+$state-danger-text:   #D22A27;
+$state-danger-bg:     #f2dede;
+$state-danger-border: darken(adjust-hue($state-danger-bg, -10), 5%);
+
+$color-1th: $brand-primary;
+$color-1th-border: #5AA0CA;
+$color-2th: #F88900;
+$color-3th: #404040;
+$color-4th: #797979;
+$color-5th: #c6c6c6;
+$color-6th: #eaeaea;
+$color-7th: #F4F6F9;
+$color-8th: #fff;
+$color-bg: #f9fcfe;
+$body: #38405e;
+$bg: #f9fcfe;
+$gray: #5d7592;
+$shadow: #dde8f0;
+$gray2: #476283;
+$primary: #1bbbef;
+$color-gold: #EFC72D;
+
+
+$color1: #f75b5b;
+$color2: #c84051;
+$color3: #4f3462;
+$color4: #794d9a;
+$color5: #4A9DD4;
+$color6: #B54EA6;
+
+
+$talk-for-whatsapp: #53545c;
+$talk-for-whatsapp-icon: #1caf5c;
+
+$success: #2d9c5d;
+$error: #D64242;
+
+$github: #000 !important;
+$linkedin: #007bb6 !important;
+$pinterest: #cb2027 !important;
+$skype: #00aff0 !important;
+$behance: #000 !important;
+$blogger: #ff6600 !important;
+$facebook: #3c599f !important;
+$foursquare: #1cafec !important;
+$google-plus: #cf1717 !important;
+$instagram: #2a5b83 !important;
+$lastfm: #d21309 !important;
+$steam: #000 !important;
+$vine: #00a478 !important;
+$wordpress: #21759a !important;
+$yahoo: #572c73 !important;
+$vimeo: #1ab7ea !important;
+$socialnetwork130: #f7620e !important;
+$spotify: #1ed760 !important;
+$twitter: #33ccff !important;
+$whatsapp: #179653 !important;
+$youtube: #ce1525 !important;
+
+/* FONT */
+$font-tiny: 0.571em;
+$font-wee: 0.715em;
+$font-small: 0.857em;
+$font-main: 1em;
+$font-middle: 1.143em;
+$font-large: 1.286em;
+$font-extra-large: 1.429em;
+$font-ultra-large: 1.571em;
+$font-big: 1.714em;
+
+$font-thin: 100;
+$font-extra-light: 200;
+$font-light: 300;
+$font-normal: normal;
+$font-medium: 500;
+$font-semi-bold: 600;
+$font-bold: 700;
+$font-extra-bold: 800;
+$font-ultra-bold: 900;
+
+$global-radius: 0;
+$global-delay: 0.05s;
+$global-time: 0.25s;
+
+@mixin afTransition($time: $global-time, $delay: $global-delay) {
+	transition: $time linear $delay;
+	-webkit-transition: $time linear $delay;
+  -moz-transition: $time linear $delay;
+	-ms-transition: $time linear $delay;
+	-o-transition: $time linear $delay;
+	@content;
+}
+
+@mixin afAnimation($animation: fadeInUp, $delay: 0, $duration: 1s) {
+  animation-duration: $duration;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  -ms-animation-fill-mode: both;
+  -o-animation-fill-mode: both;
+  animation-fill-mode: both;
+  animation-delay: $delay;
+  -webkit-animation-name: $animation;
+  -moz-animation-name: $animation;
+  -ms-animation-name: $animation;
+  -o-animation-name: $animation;
+  animation-name: $animation;
+}
+
+@mixin velvetButton($color: $color-1th, $text-color: $color-8th) {
+  background: lighten($color, 5%);
+  border: 1px solid darken($color, 1%);
+  border-top: 1px solid lighten($color, 15%);
+  -webkit-box-shadow: 0px 2px 0 darken($color, 5%), 2px 4px 6px rgba(darken($color, 2%), 0.75);
+  -moz-box-shadow: 0px 2px 0 darken($color, 5%), 2px 4px 6px rgba(darken($color, 2%), 0.75);
+  -ms-box-shadow: 0px 2px 0 darken($color, 5%), 2px 4px 6px rgba(darken($color, 2%), 0.75);
+  -o-box-shadow: 0px 2px 0 darken($color, 5%), 2px 4px 6px rgba(darken($color, 2%), 0.75);
+  box-shadow: 0px 2px 0 darken($color, 5%), 2px 4px 6px rgba(darken($color, 2%), 0.75);
+  font-weight: $font-semi-bold;
+  transition: all 150ms linear;
+  color: $text-color;
+  border-radius: 4px;
+  min-width: 40px;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: darken($color, 5%);
+    border: 1px solid darken($color, 3%);
+    border-top: 1px solid lighten($color, 15%);
+    -webkit-box-shadow: 1px 1px 2px #fff;
+    -moz-box-shadow: 1px 1px 2px #fff;
+    -ms-box-shadow: 1px 1px 2px #fff;
+    -o-box-shadow: 1px 1px 2px #fff;
+    box-shadow: 1px 1px 2px #fff;
+    color: rgba($text-color, 0.5);
+    text-decoration: none;
+    -webkit-text-shadow: -1px -1px 0 darken($color, 9.5%);
+    -moz-text-shadow: -1px -1px 0 darken($color, 9.5%);
+    -ms-text-shadow: -1px -1px 0 darken($color, 9.5%);
+    -o-text-shadow: -1px -1px 0 darken($color, 9.5%);
+    text-shadow: -1px -1px 0 darken($color, 9.5%);
+    transition: all 250ms linear;
+  }
+  @content;
+}

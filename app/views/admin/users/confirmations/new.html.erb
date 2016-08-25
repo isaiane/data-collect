@@ -1,0 +1,26 @@
+<h3>Resend confirmation instructions</h3>
+<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, :id => "form_login", class: "form"}) do |f| %>
+  <% if notice %>
+		<div id="toast-container">
+			<div class="toast toast-success">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<%= notice.html_safe %>
+			</div>
+		</div>
+	<% end %>
+	<% if alert %>
+		<div id="toast-container">
+			<div class="toast toast-warning">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<%= alert.html_safe %>
+			</div>
+		</div>
+	<% end %>
+  <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), placeholder: "Email" %>
+	<%= button_tag(type: 'submit', class: "btn btn-primary btn-block btn-login") do%>
+   Login
+  <% end %>
+<% end %>
+<div class="login-bottom-links">
+	<%= render "admin/users/shared/links" %>
+</div>

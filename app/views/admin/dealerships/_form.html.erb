@@ -1,0 +1,224 @@
+<%= form_for([@account, @dealership], validate: true) do |f| %>
+  <% if @dealership.errors.any? %>
+    <div id="toast-container" class="toast-top-right">
+      <div class="toast toast-error">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <div class="toast-title"><%= t('errors.template.header', :count => @dealership.errors.count, :model => t('dealership')) %></div>
+        <div class="toast-message">
+           <ul>
+            <% @dealership.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="col-xs-12">
+    <ul class="list-group">
+      <li class="list-group-item" id="form-inputs">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 list-description">
+            <h4><%= t(".profile.title") %></h4>
+            <p><%= t(".profile.description") %></p>
+          </div>
+          <div class="col-xs-12 col-sm-5 list-content">
+            <div class="form-group">
+              <%= f.label :name, t("form.name"), class: "control-label" %>
+              <%= f.text_field :name, class: "form-control", placeholder: t(".profile.placeholder.name") %>
+            </div>
+            <div class="form-group">
+              <%= f.label :slug, t("form.slug"), class: "control-label" %>
+              <%= f.text_field :slug, class: "form-control", placeholder: t(".profile.placeholder.slug") %>
+              <small><%= t("form.slug_small") %></small>
+            </div>
+            <div class="form-group">
+              <%= f.label :company_name, t(".profile.company_name"), class: "control-label" %>
+              <%= f.text_field :company_name, class: "form-control", placeholder: t(".profile.placeholder.company_name") %>
+            </div>
+            <div class="form-group">
+              <%= f.label :company_cnpj, t(".profile.company_cnpj"), class: "control-label" %>
+              <%= f.text_field :company_cnpj, class: "form-control", data: {cnpj: true}, placeholder: "00.000.000/0000-00" %>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item" id="form-inputs">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 list-description">
+            <h4>Endereço da Concessionária</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+          <div class="col-xs-12 col-sm-5 list-content">
+            <div class="form-group">
+              <%= f.label :address, "Endereço", class: "control-label" %>
+              <%= f.text_field :address, class: "form-control" %>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-3">
+                <div class="form-group">
+                  <%= f.label :number, "Número", class: "control-label" %>
+                  <%= f.text_field :number, class: "form-control" %>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-9">
+                <div class="form-group">
+                  <%= f.label :neighborhood, "Bairro", class: "control-label" %>
+                  <%= f.text_field :neighborhood, class: "form-control" %>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= f.label :complement, "Complemento", class: "control-label" %>
+              <%= f.text_field :complement, class: "form-control" %>
+              <small>(Opicional)</small>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                  <%= f.label :city, "Cidade", class: "control-label" %>
+                  <%= f.text_field :city, class: "form-control" %>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                  <%= f.label :cep, "CEP", class: "control-label" %>
+                  <%= f.text_field :cep, class: "form-control", data: {cep: true}, placeholder: "00.000-00" %>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                  <%= f.label :state, "Estado", class: "control-label" %>
+                  <%= f.text_field :state, class: "form-control" %>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                  <%= f.label :country, "País", class: "control-label" %>
+                  <%= f.text_field :country, class: "form-control" %>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= f.label :google_maps, "Url Mapa", class: "control-label" %>
+              <%= f.text_area :google_maps, rows: 5, class: "form-control", placeholder: "Entre com a url do Google Maps" %>
+              <small>Busque a local desejado no Google Maps, vá em compartilhar, incorporar mapa, copie o valor do atributo "src" e cole a cima.</small>
+            </div>
+            <div class="form-group">
+              <%= f.label :company_email, "Email da Concessionária", class: "control-label" %>
+              <%= f.email_field :company_email, class: "form-control", placeholder: "Entre com o email da concessionária" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :company_phone, "Telefone da Concessionária", class: "control-label" %>
+              <%= f.telephone_field :company_phone, class: "form-control", data: {phone: true}, placeholder: "Entre com o telefone da concessionária" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :company_website, "Site da Concessionária", class: "control-label" %>
+              <%= f.url_field :company_website, class: "form-control", placeholder: "http://website.com" %>
+              <small>(Opicional)</small>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item" id="form-inputs">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 list-description">
+            <h4>Informações do Contato responsavél</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+          <div class="col-xs-12 col-sm-5 list-content">
+            <div class="form-group">
+              <%= f.label :contact_person, "Nome", class: "control-label" %>
+              <%= f.text_field :contact_person, class: "form-control", placeholder: "Entre com o nome do responsavél" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :contact_email, "Email", class: "control-label" %>
+              <%= f.email_field :contact_email, class: "form-control", placeholder: "Entre com o email do responsavél" %>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-7">
+                <div class="form-group">
+                  <%= f.label :contact_phone, "Telefone", class: "control-label" %>
+                  <%= f.telephone_field :contact_phone, class: "form-control", data: {phone: true}, placeholder: "(00) 0000-0000" %>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-5">
+                <div class="form-group">
+                  <%= f.label :contact_branch, "Ramal", class: "control-label" %>
+                  <%= f.telephone_field :contact_branch, class: "form-control" %>
+                  <small>(Opicional)</small>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-7">
+                <div class="form-group">
+                  <%= f.label :contact_cell_phone, "Celular", class: "control-label" %>
+                  <%= f.telephone_field :contact_cell_phone, class: "form-control", data: {phone: true}, placeholder: "(00) 00000-0000" %>
+                  <small>(Opicional)</small>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-5">
+                <div class="form-group">
+                  <%= f.label :contact_birthday, "Data de Nascimento", class: "control-label" %>
+                  <%= f.date_field :contact_birthday, class: "form-control" %>
+                  <small>(Opicional)</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% if can? :update, @accout %>
+        <% if @dealership.id %>
+          <li class="list-group-item" id="form-inputs">
+            <div class="row">
+              <div class="col-xs-12 col-sm-4 list-description">
+                <h4>Ativar Concessionária</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+              <div class="col-xs-12 col-sm-5 list-content">
+                <div class="form-group group-choice">
+                  <div class="checkbox">
+                    <% unless @dealership.incomplete? %>
+                      <%= f.check_box :active %>
+                      <%= f.label :active %>
+                    <% else %>
+                      <%= f.check_box :active, disabled: "disabled" %>
+                      <%= f.label :active %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+      <% if can? :destroy, @accout %>
+        <% if @dealership.id %>
+          <li class="list-group-item" id="form-inputs">
+            <div class="row">
+              <div class="col-xs-12 col-sm-4 list-description">
+                <h4 class="text-danger">Excluir conta</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+              <div class="col-xs-12 col-sm-5 list-content">
+                <%= link_to "Excluir concessionária...", [@account, @dealership], class: "btn btn-danger call-modal-destroy"%>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+      <li class="list-group-item" id="form-inputs">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 list-description">
+            <h4>Salvar</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+          <div class="col-xs-12 col-sm-5 list-content">
+            <%= f.submit "Salvar", class: "btn btn-primary" %>
+            <%= link_to "Cancelar", @account, class: "btn btn-default" %>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+<% end %>

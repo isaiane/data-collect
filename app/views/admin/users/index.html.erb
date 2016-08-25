@@ -1,0 +1,96 @@
+<% unless params[:account_id]%>
+	<div class="container-fluid page-header" id="page-title">
+		<div class="container">
+			<div class="row">
+			  <div class="col-xs-6">
+			    <h4 class="page-title"><i class="fa fa-users"></i><%= t('user').pluralize(I18n.locale.to_sym) %></h4>
+			  </div>
+			  <div class="col-xs-6">
+			  	<%= link_to new_user_path, class: "auto-more call-modal", :data => {toggle: "tooltip", placement: "left",  title: t('helpers.submit.create', model: t("user"))} do %>
+			  		<i class="fa fa-plus"></i>
+			  	<% end %>
+			  </div>
+			</div>
+		</div>
+	</div>
+<% else %>
+	<div class="container-fluid page-header" id="page-title">
+	  <div class="container">
+	    <div class="row">
+	      <div class="col-xs-12 col-sm-6">
+	        <h4 class="page-title">
+	        <i class="fa fa-university"></i>
+	        <%= link_to @account.name, @account %>
+	        <span class="fa fa-chevron-right"></span>
+	        <%= t(".title") %>
+	        </h4>
+	      </div>
+	      <div class="col-xs-6">
+	        <% unless @account.incomplete? %><a href="#options-model" class="auto-more call-modal"><i class="fa fa-plus"></i></a><% end %>
+	        <% if @account.favorite %>
+	          <%= link_to account_path(@account, "account[favorite]" => false), method: :put, class: "auto-favorite active" do %>
+	            <i class="fa"></i>
+	          <% end %>
+	        <% else %>
+	        <%= link_to account_path(@account, "account[favorite]" => true), method: :put, class: "auto-favorite" do %>
+	            <i class="fa"></i>
+	          <% end %>
+	        <% end %>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<%= render "admin/accounts/shared" %>
+
+<% end %>
+
+<section id="users" class="container-fluid listing">
+	<div class="container">
+		<div class="row">
+		<div class="col-xs-12">
+			<div class="ctrls">
+				<% unless params[:account_id]%>
+	        <%= form_tag users_path, id: "filter-search", class: "filter", method: "GET" do %>
+	        	<span class="fa fa-search"></span>
+	        	<%= text_field_tag :search, params[:search], autocomplete: "off", :placeholder => t('form.search'), class:"form-control ng-pristine ng-valid ng-touched" %>
+	        	<%= hidden_field_tag :sort, params[:sort] %>
+	        	<%= hidden_field_tag :order, params[:order] %>
+	        <% end %>
+	      <% else %>
+	      	<%= form_tag account_users_path(@account), id: "filter-search", class: "filter", method: "GET" do %>
+	        	<span class="fa fa-search"></span>
+	        	<%= text_field_tag :search, params[:search], autocomplete: "off", :placeholder => t('form.search'), class:"form-control ng-pristine ng-valid ng-touched" %>
+	        	<%= hidden_field_tag :sort, params[:sort] %>
+	        	<%= hidden_field_tag :order, params[:order] %>
+	        <% end %>
+	      <% end %>
+	    </div>
+      <div class="grid grid-list">
+        <div class="grid-head">
+          <ul>
+            <li style="width:30%"><a data-sort="name" data-order="asc"><%= t "form.name" %></a></li>
+            <li style="width:40%"><a data-sort="email" data-order="asc"><%= t "form.email" %></a></li>
+            <li style="width:15%"><span><%= t ".filter.last_access" %></span></li>
+            <li style="width:15%"></li>
+          </ul>
+        </div>
+        <div id="item-list">
+					<%= render "users" %>
+        </div>
+      </div>
+		</div>
+		</div>
+	</div>
+</section>
+
+<% if params[:account_id]%>
+	<div class="overlay admin">
+	  <div class="dark-side"></div>
+	  <% unless @account.incomplete? %>
+	    <div id="options-model" class="modal options-modal">
+	      <%= render "admin/accounts/options" %>
+	    </div>
+	  <% end %>
+	</div>
+<% end %>

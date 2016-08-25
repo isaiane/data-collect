@@ -1,0 +1,28 @@
+<div class="content-modal">
+	<ul class="option-list">
+		<li class="option-body">
+			<%= link_to types_path do %>
+				<i class="option-icon fa fa-cubes"></i>
+				<span><%= t("admin.types.show.title") %></span>
+			<% end %>
+		</li>
+		<li class="option-body">
+			<%= link_to categories_path do %>
+				<i class="option-icon fa fa-tag"></i>
+				<span><%= t("admin.categories.show.title") %></span>
+			<% end %>
+		</li>
+		<li class="option-body">
+			<%= link_to types_path do %>
+				<i class="option-icon fa fa-shield"></i>
+				<span><%= t("admin.brands.show.title") %></span>
+			<% end %>
+		</li>
+		<li class="option-body">
+			<%= link_to new_account_path do %>
+				<i class="option-icon fa fa-university"></i>
+				<span><%= t("admin.accounts.show.title") %></span>
+			<% end %>
+		</li>
+	</ul>
+</div>

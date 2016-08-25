@@ -1,0 +1,22 @@
+<ul class="grid-items">
+	<% @account.users.take(5).each do |user| %>
+		<% if can? :read, user %>
+			<li class="grid-body">
+			  <ul>
+			    <li>
+			      <span class="grid-user small">
+			        <span class="grid-usericon">
+			        	<%= user.slug.upcase %>
+			        </span>
+			      	<span class="grid-title">
+			      		<%= link_to user.name, user %>
+			      		<p class="grid-text"><%= user.rules[user.rule] %></p>
+			      	</span>
+			      </span>
+			      <span class="grid-info"><b class="fa fa-comments">0</b> atendimentos</span>
+			    </li>
+			  </ul>
+			</li>
+		<% end %>
+	<% end %>
+</ul>

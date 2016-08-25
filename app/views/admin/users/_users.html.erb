@@ -1,0 +1,47 @@
+<ul class="grid-items">
+	<% @users.each do |user| %>
+		<% if can? :read, user %>
+			<li class="grid-body">
+			  <ul>
+			    <li>
+			      <span class="grid-user">
+				      <% unless user.profile_image? %>
+				      	<% if user.rule > 50 %>
+				        	<span class="grid-usericon grid-icon-<%= user.rule %>"><%= t("admin.users.form.profile_type." + user.common_rules[user.rule]) %></span>
+				        <% else %>
+				        	<span class="grid-usericon grid-icon-<%= user.rule %>">Teste</span>
+				        <% end %>
+			        <% else %>
+			        	<span class="grid-userimg">
+			          	<img src="<%= user.profile_image_url(:thumb)%>" alt="<%= user.name %>">
+			          </span>
+			        <% end %>
+			        <span class="grid-title"><%= link_to user.name, user %></span>
+			      </span>
+			    </li>
+			    <li>
+			      <span class="grid-title"><%= link_to user.email, user %></span>
+			    </li>
+			    <li>
+			      <span class="grid-date">
+				      <% unless user.login_at.nil? %>
+			      		<%= distance_of_time_in_words(Time.now, user.login_at, scope: 'datetime.distance_in_words') %>
+			      	<% else %>
+			      		<%= t("form.no_activity") %>
+			      	<% end %>
+			      </span>
+			    </li>
+			    <li>
+			      <span class="grid-options">
+			      	<%= link_to user do %>
+			      		<span class="fa fa-ellipsis-h"></span>
+							<% end %>
+			      </span>
+			    </li>
+			  </ul>
+			</li>
+		<% end %>
+	<% end %>
+</ul>
+
+<%= will_paginate @users, renderer: BootstrapPagination::Rails %>

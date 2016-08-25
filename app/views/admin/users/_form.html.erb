@@ -1,0 +1,178 @@
+<%= form_for(@user, validate: true) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="toast-container" class="toast-top-right">
+      <div class="toast toast-error">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <div class="toast-title"><%= t('errors.template.header', :count => @user.errors.count, :model => t('user')) %></div>
+        <div class="toast-message">
+           <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="col-xs-12">
+    <ul class="list-group">
+      <li class="list-group-item" id="form-inputs">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 list-description">
+            <h4><%= t(".profile.title") %></h4>
+            <p><%= t(".profile.description") %></p>
+          </div>
+          <div class="col-xs-12 col-sm-7 list-content">
+            <div class="col-xs-12 col-sm-1 box-avatar">
+              <div class="img-avatar img-middle">
+                <% unless @user.profile_image? %>
+                  <span><%= t("user") %></span>
+                <% else %>
+                  <img src="<%= @user.profile_image_url(:thumb)%>" alt="<%= @user.name %>">
+                <% end %>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-5">
+              <div class="form-group">
+                <%= f.label :profile_image, t(".profile.image"), class: "control-label" %>
+                <%= f.file_field :profile_image, class: "file-preview" %>
+              </div>
+              <div class="form-group">
+                <%= f.label :email, t("form.email"), class: "control-label" %>
+                <%= f.email_field :email, class: "form-control has-feedback", placeholder: t(".profile.placeholder.email") %>
+              </div>
+              <div class="form-group">
+                <%= f.label :slug, t(".slug"), class: "control-label" %>
+                <%= f.text_field :slug, class: "form-control", placeholder: t(".profile.placeholder.slug") %>
+                <small><%= t("form.slug_small")%></small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item" id="form-inputs">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 list-description">
+            <h4><%= t(".password.title")%></h4>
+            <p><%= t(".password.description")%></p>
+          </div>
+          <div class="col-xs-12 col-sm-5 list-content">
+            <% unless @user.id %>
+              <div class="form-group">
+                <%= f.label :password, t(".password.title"), class: "control-label" %>
+                <%= f.password_field :password, class: "form-control", placeholder: t(".password.placeholder.password") %>
+                <small><%= t(".password.password_small") %></small>
+              </div>
+              <div class="form-group">
+                <%= f.label :password_confirmation, t(".password.password_confirmation"), class: "control-label" %>
+                <%= f.password_field :password_confirmation, class: "form-control", placeholder: t(".password.placeholder.password_confirmation") %>
+              </div>
+            <% else %>
+              <%= link_to t(".password.button"), edit_password_users_path, class: "btn btn-default" %>
+            <% end %>
+          </div>
+        </div>
+      </li>
+      <% if can? :profile, @user %>
+        <li class="list-group-item" id="form-inputs">
+          <div class="row">
+            <div class="col-xs-12 col-sm-4 list-description">
+              <h4><%= t(".profile_type.title")%></h4>
+              <p><%= t(".profile_type.description")%></p>
+            </div>
+            <div class="col-xs-12 col-sm-8 list-content">
+              <div class="col-xs-12 row">
+                <div class="panel panel-default">
+                  <% if can? :rules, @user %><div class="panel-heading"><%= t(".profile_type.common_rules") %></div><% end %>
+                  <div class="panel-body">
+                    <div class="form-group group-choice">
+                      <% @user.common_rules.each do |rule| %>
+                        <div class="radio">
+                          <%= label :user_rule, rule[0], t(".profile_type."+rule[1]) %>
+                          <%= f.radio_button :rule, rule[0] %>
+                          <label for="user_rule_<%= rule[0] %>"></label>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      <% end %>
+      <li class="list-group-item" id="form-inputs">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 list-description">
+            <h4><%= t(".user_information.title")%></h4>
+            <p><%= t(".user_information.description")%></p>
+          </div>
+          <div class="col-xs-12 col-sm-5 list-content">
+            <div class="form-group">
+              <%= f.label :name, t("form.name"), class: "control-label" %>
+              <%= f.text_field :name, class: "form-control", placeholder: t(".user_information.placeholder.name") %>
+            </div>
+            <div class="form-group">
+              <%= f.label :lastname, t("form.lastname"), class: "control-label" %>
+              <%= f.text_field :lastname, class: "form-control", placeholder: t(".user_information.placeholder.lastname") %>
+            </div>
+            <div class="form-group">
+              <%= f.label :phone_number, t("form.phone"), class: "control-label" %>
+              <%= f.telephone_field :phone_number, data: {phone: true}, class: "form-control", placeholder: t(".user_information.placeholder.phone") %>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item" id="form-inputs">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 list-description">
+            <h4><%= t(".language.title")%></h4>
+            <p><%= t(".language.description")%></p>
+          </div>
+          <div class="col-xs-12 col-sm-5 list-content">
+            <div class="form-group group-choice">
+              <div class="radio">
+                <%= label :user_locale, "en", "English" %>
+                <%= f.radio_button :locale, "en" %>
+                <label for="user_locale_en">en</label>
+              </div>
+              <div class="radio">
+                <%= label :user_locale, "pt-br", "Português (Brasil)" %>
+                <%= f.radio_button :locale, "pt-BR" %>
+                <label for="user_locale_pt-br">pt-BR</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <% if can? :destroy, @user %>
+        <% if @user.id %>
+          <li class="list-group-item" id="form-inputs">
+            <div class="row">
+              <div class="col-xs-12 col-sm-4 list-description">
+                <h4 class="text-danger"><%= t("helpers.delete.title", model: t("user"))%></h4>
+                <p><%= t("helpers.delete.description", model: t("user"))%></p>
+              </div>
+              <div class="col-xs-12 col-sm-5 list-content">
+                <%= link_to t('helpers.submit.destroy', model: t("user")), @user, class: "btn btn-danger call-modal-destroy"%>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+      <li class="list-group-item" id="form-inputs">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 list-description">
+            <h4><%= t(".save.title")%></h4>
+            <p><%= t(".save.description")%></p>
+          </div>
+          <div class="col-xs-12 col-sm-5 list-content">
+            <%= f.submit t('helpers.submit.save'), class: "btn btn-primary" %>
+            <%= link_to t('helpers.submit.cancel'), users_path, class: "btn btn-default" %>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+<% end %>
