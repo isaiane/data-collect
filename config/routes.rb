@@ -10,6 +10,13 @@ Rails.application.routes.draw do
     get 'developer/ui_elements' => 'developer#ui_elements'
 
     resources :dashboard, :resources, only: [:index]
+    resources :records
+    resources :professions, only: [:index, :destroy, :create] do
+      collection do
+        post 'update_row_order'
+        put 'update_multiple'
+      end
+    end
     resources :users, except: [:edit] do
       collection do
         get 'edit_password'

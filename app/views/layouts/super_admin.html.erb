@@ -17,9 +17,7 @@
 				  	<div class="row">
 						  <div class="col-xs-6 col-sm-2">
 						    <div class="navbar-header">
-						      <a class="navbar-brand" href="/admin/dashboard">
-						        <img alt="Brand" src="/assets/admin/logo.png" alt="AutoForce">
-						      </a>
+						      <a class="navbar-brand" href="/admin/dashboard">Coleta de Dados</a>
 						    </div>
 						  </div>
 						  <div class="col-xs-6 col-sm-2 col-sm-push-8">
@@ -36,19 +34,21 @@
 											  	<span><%= current_user.email %></span>
 											  <% end %>
 										  </li>
-										  <li><div class="no-accordion-link"><i class="fa fa-tachometer"></i><%= link_to t("admin.dashboard.index.title"), dashboard_index_path %></a></div>
-										  <% if can? :registration, User.new %>
-										  	<li><div class="no-accordion-link"><i class="fa fa-flask"></i><%= link_to t("admin.resources.index.title"), resources_path %></div>
-										  <% end %>
+										  <li><div class="no-accordion-link"><i class="fa fa-bar-chart"></i><%= link_to "Gráficos", dashboard_index_path %></a></div>
+										  </li>
+										  <li><div class="no-accordion-link"><i class="fa fa-file-text-o"></i><%= link_to "Prontuários", records_path %></div>
+										  </li>
+										  <li><div class="no-accordion-link"><i class="fa fa-flask"></i><%= link_to "Profissões", professions_path %></div>
+										  </li>
 										  <% if can? :read, User.new %>
 											  <li>
 											  	<div class="no-accordion-link">
 											  		<i class="fa fa-users"></i>
-													  <%= link_to t('user').pluralize(I18n.locale.to_sym), users_path %>
+													  <%= link_to "Usuários", users_path %>
 												  </div>
 											  </li>
 											<% end %>
-											<li><div class="no-accordion-link"><i class="fa fa-sign-out"></i><a href="/logout"><%= t("admin.session.logout")%></a></div>
+											<li><div class="no-accordion-link"><i class="fa fa-sign-out"></i>Sair</div>
 										</ul>
 					        </li>
 					      </ul>

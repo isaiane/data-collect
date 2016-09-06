@@ -1,0 +1,88 @@
+<div class="col-xs-12">
+  <ul class="list-group">
+    <li class="list-group-item" id="form-inputs">
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 list-description">
+          <h4>Nova Profissão</h4>
+          <p>Cadastre aqui um nova profissão, basta adicionar o nome e clicar no botão "+".</p>
+        </div>
+        <div class="col-xs-12 col-sm-7 list-content">
+          <%= form_for(@profession, validate: true, class: "form-inline") do |f| %>
+            <% if @profession.errors.any? %>
+              <div id="toast-container" class="toast-top-right">
+                <div class="toast toast-error">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <div class="toast-title"><%= t('errors.template.header', :count => @profession.errors.count, :model => t('profession')) %></div>
+                  <div class="toast-message">
+                     <ul>
+                      <% @profession.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            <div class="form-group sortable">
+              <div class="row">
+                <div class="col-xs-4"><h6>Nome</h6></div>
+              </div>
+              <div class="row">
+                <div class="col-xs-4">
+                  <%= f.text_field :name, placeholder: "Nome", class: "form-control" %>
+                </div>
+                <div class="col-xs-4 actions">
+                  <%= button_tag(type: "submit", class: "btn btn-primary") do %>
+                    <i class="fa fa-plus"></i>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </li>
+    <li class="list-group-item" id="form-inputs">
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 list-description">
+          <h4>Profissões cadastradas</h4>
+          <p>Listado ao lado estão todas as profissões cadastradas. Você poderá editar e excluir, caso ela não tenha nenhum dependente.</p>
+        </div>
+        <div class="col-xs-12 col-sm-7 list-content">
+          <% if @professions.any? %>
+            <%= form_tag update_multiple_professions_path, id: "update_multiple", method: :put do %>
+              <div class="row">
+                <div class="col-xs-4"><h6>Nome</h6></div>
+              </div>
+              <ol class="sortable sortable_drop" data-url='professions/update_row_order'>
+                <% @professions.each do |profession| %>
+                  <li class="form-group item" data-item-id=<%= "#{profession.id}" %>>
+                    <%= fields_for "professions[]", profession do |f| %>
+                      <div class="form-group sortable">
+                        <div class="row item-content">
+                        <span class="fa fa-ellipsis-v icon-move"></span>
+                          <div class="col-xs-4">
+                            <%= f.text_field :name, placeholder: "Nome", class: "form-control" %>
+                          </div>
+                          <div class="col-xs-4 actions">
+                            <% if can? :destroy, profession %>
+                              <%= link_to profession, method: :delete, class: "btn btn-danger" do %>
+                                <i class="fa fa-trash"></i>
+                              <% end %>
+                            <% else %>
+                              <button type="button" class="btn btn-default" role="button" title="<%= t('form.cannot_excluded_title')%>" data-toggle="popover" data-content="<%= profession.brands_count.to_s + " " + t('admin.brands.index.title').downcase + " / " + profession.categories_count.to_s + " " + t('admin.categories.index.title').downcase + " / " +  profession.models_count.to_s + " " + t('admin.models.index.title').downcase + " / " + profession.used_models_count.to_s + " " + t('admin.used_models.index.title').downcase %>"><i class="fa fa-info"></i></button>
+                            <% end %>
+                          </div>
+                        </div>
+                      </div>
+                    <% end %>
+                  </li>
+                <% end %>
+              </ol>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

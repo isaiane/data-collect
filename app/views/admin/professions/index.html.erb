@@ -1,0 +1,22 @@
+<div class="container-fluid page-header" id="page-title">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <h4 class="page-title">
+          <i class="fa fa-flask"></i>
+          <%= link_to t("admin.professions.index.title"), professions_path %>
+        </h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="container-fluid container-form">
+  <div class="container">
+    <div class="row">
+      <div id="main">
+        <%= render "form" %>
+      </div>
+    </div>
+  </div>
+</section>

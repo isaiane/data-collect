@@ -1,6 +1,7 @@
 ---
 pt-BR:
   user: "Usuário"
+  profession: "Profissão"
   pluralize:
     all:
       female: "Todas as %{model}"
@@ -30,6 +31,9 @@ pt-BR:
     last_update: "Última Atualização"
     latest_activities: "Últimas Atividades"
   admin:
+    professions:
+      index:
+        title: "Profissões"
     users:
       form:
         profile:

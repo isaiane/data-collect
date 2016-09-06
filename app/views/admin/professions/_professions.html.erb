@@ -1,0 +1,21 @@
+<ul class="grid-items">
+	<% @professions.take(5).each do |profession| %>
+		<% if can? :read, profession %>
+			<li class="grid-body">
+			  <ul>
+			    <li>
+			      <span class="grid-user small">
+			        <span class="grid-usericon grid-icon-2">
+			        	<%= profession.name.upcase %>
+			        </span>
+			      	<span class="grid-title">
+			      		<%= link_to profession.name, professions_path %>
+			      	</span>
+			      </span>
+			      <span class="grid-info"><b class="fa fa-shield"><%= profession.brands_count%></b></span>
+			    </li>
+			  </ul>
+			</li>
+		<% end %>
+	<% end %>
+</ul>

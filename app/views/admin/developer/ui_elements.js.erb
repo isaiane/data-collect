@@ -1,8 +1,0 @@
-var stripped_url = document.location.toString().split("#")[1];
-if(stripped_url == "forms") {
-	$("#main").html("<%= escape_javascript(render('forms')) %>");
-} else if(stripped_url == "lists") {
-	$("#main").html("<%= escape_javascript(render('lists')) %>");
-} else {
-	$("#main").html("<%= escape_javascript(render('forms')) %>");
-}

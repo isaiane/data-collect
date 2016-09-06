@@ -1,6 +1,7 @@
 ---
 en:
   user: "User"
+  profession: "Profession"
   pluralize:
     all:
       female: "All %{model}"

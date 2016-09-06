@@ -10,7 +10,10 @@
 		background: linear-gradient(to bottom, lighten($color-1th, 4%), $color-1th), linear-gradient(to right, $color-1th, darken($color-1th, 3%));
 		border: none;
 		.navbar-brand {
-	    padding: 5px 0;
+	    color: $color-8th;
+	    line-height: 50px;
+	    padding: 0;
+	    font-weight: 800;
 	    img {height: 100%;}
 	  }
 	}

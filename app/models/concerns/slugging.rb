@@ -9,6 +9,6 @@ module Slugging
   end
 
   def slugged
-  	self.slug = self.slug.parameterize.gsub("-", "_")
+  	self.slug = self.slug.parameterize
   end
 end

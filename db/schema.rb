@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160825015558) do
+ActiveRecord::Schema.define(version: 20160906004630) do
+
+  create_table "professions", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "row_order"
+    t.integer  "records_count", default: 0, null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
 
   create_table "records", force: :cascade do |t|
     t.date     "collection_date"
@@ -31,7 +39,7 @@ ActiveRecord::Schema.define(version: 20160825015558) do
     t.integer  "type_of_residence"
     t.integer  "characterization_of_housing"
     t.string   "characterization_of_housing_other"
-    t.string   "occupation"
+    t.integer  "profession_id"
     t.integer  "situation_nch_sitema"
     t.string   "cause_of_death"
     t.integer  "diagnosis_time_and_end_of_treatment_years",  default: 0
