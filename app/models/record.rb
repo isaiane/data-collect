@@ -2,7 +2,7 @@ class Record < ActiveRecord::Base
 	belongs_to :profession, counter_cache: true
 	has_one :professions
 
-	validates_presence_of :collection_date, :responsible_for_collecting, :medical_record_number, :birthday, :birthplace, :place_residence, :age, :sex, :breed, :schooling, :marital_status, :profession, :situation_nch_sitema, :cause_of_death, :diagnosis_time_and_end_of_treatment_years, :diagnosis_time_and_end_of_treatment_months, :hsct_follow_up_of_the_nhc_years, :hsct_follow_up_of_the_nhc_months, :hla_major_tests, :there_examination_icd_10, :diagnosis_doctor_in_medical_records, :described_comorbidities, :treatments_described, :type_of_hsct, :presence_of_gvhd, :forms_of_gvhd, :survival_time_years, :survival_time_months
+	validates_presence_of :collection_date, :responsible_for_collecting, :medical_record_number, :birthday, :birthplace, :place_residence, :age, :sex, :breed, :schooling, :marital_status, :profession, :situation_nch_sitema, :diagnosis_time_and_end_of_treatment_years, :diagnosis_time_and_end_of_treatment_months, :hsct_follow_up_of_the_nhc_years, :hsct_follow_up_of_the_nhc_months, :hla_major_tests, :there_examination_icd_10, :diagnosis_doctor_in_medical_records, :described_comorbidities, :treatments_described, :type_of_hsct, :presence_of_gvhd, :forms_of_gvhd, :survival_time_years, :survival_time_months
 
 	# :type_of_residence_other,
 	# :characterization_of_housing_other,
@@ -61,13 +61,13 @@ class Record < ActiveRecord::Base
 	}
 
 	@@there_examination_icd_10_list = {
-		false => "Não",
-		true => "Sim"
+		0 => "Não",
+		1 => "Sim"
 	}
 
 	@@presence_of_gvhd_list = {
-		false => "Não",
-		true => "Sim"
+		0 => "Não",
+		1 => "Sim"
 	}
 
 	@@forms_of_gvhd_list = {

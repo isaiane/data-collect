@@ -105,13 +105,18 @@ ol.separate-group {
     margin-bottom: 10px;
     overflow: hidden;
     & > label {
-			font-weight: $font-bold;
+      font-weight: $font-bold;
       padding: 0;
       margin: 0 5px 5px 0;
       display: block;
       float: left;
       line-height: 2em;
     }
+  }
+  .has-error {
+    display: block;
+    float: left;
+    & ~ label {color: $error}
   }
 }
 input[type="checkbox"],

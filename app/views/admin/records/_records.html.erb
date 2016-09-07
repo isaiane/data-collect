@@ -5,7 +5,7 @@
 			  <ul>
 			    <li>
 			      <span class="grid-user">
-			        <span class="grid-title"><%= link_to record.responsible_for_collecting, record %></span>
+			        <span class="grid-title"><%= link_to truncate(record.responsible_for_collecting, :length => 40), record %></span>
 			      </span>
 			    </li>
 			    <li>

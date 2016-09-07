@@ -91,7 +91,7 @@
                         <div class="radio radio-list">
                           <%= f.radio_button :sex, sex[0] %>
                           <label for="record_sex_<%= sex[0] %>"></label>
-                          <%= label :record_sex, sex[0], t(".profile_type."+sex[1]) %>
+                          <%= label :record_sex, sex[0], sex[1] %>
                         </div>
                       <% end %>
                     </div>
@@ -107,7 +107,7 @@
                         <div class="radio radio-list">
                           <%= f.radio_button :schooling, schooling[0] %>
                           <label for="record_schooling_<%= schooling[0] %>"></label>
-                          <%= label :record_schooling, schooling[0], t(".profile_type."+schooling[1]) %>
+                          <%= label :record_schooling, schooling[0], schooling[1] %>
                         </div>
                       <% end %>
                     </div>
@@ -137,7 +137,7 @@
                         <div class="radio radio-list">
                           <%= f.radio_button :marital_status, marital_status[0] %>
                           <label for="record_marital_status_<%= marital_status[0] %>"></label>
-                          <%= label :record_marital_status, marital_status[0], t(".profile_type."+marital_status[1]) %>
+                          <%= label :record_marital_status, marital_status[0], marital_status[1] %>
                         </div>
                       <% end %>
                       <div class="form-group">
@@ -158,7 +158,7 @@
                         <div class="radio radio-list">
                           <%= f.radio_button :type_of_residence, type_of_residence[0] %>
                           <label for="record_type_of_residence_<%= type_of_residence[0] %>"></label>
-                          <%= label :record_type_of_residence, type_of_residence[0], t(".profile_type."+type_of_residence[1]) %>
+                          <%= label :record_type_of_residence, type_of_residence[0], type_of_residence[1] %>
                         </div>
                       <% end %>
                       <div class="form-group">
@@ -178,7 +178,7 @@
                         <div class="radio radio-list">
                           <%= f.radio_button :characterization_of_housing, characterization_of_housing[0] %>
                           <label for="record_characterization_of_housing_<%= characterization_of_housing[0] %>"></label>
-                          <%= label :record_characterization_of_housing, characterization_of_housing[0], t(".profile_type."+characterization_of_housing[1]) %>
+                          <%= label :record_characterization_of_housing, characterization_of_housing[0], characterization_of_housing[1] %>
                         </div>
                       <% end %>
                       <div class="form-group">
@@ -215,7 +215,7 @@
                         <div class="radio radio-list">
                           <%= f.radio_button :situation_nch_sitema, situation_nch_sitema[0] %>
                           <label for="record_situation_nch_sitema_<%= situation_nch_sitema[0] %>"></label>
-                          <%= label :record_situation_nch_sitema, situation_nch_sitema[0], t(".profile_type."+situation_nch_sitema[1]) %>
+                          <%= label :record_situation_nch_sitema, situation_nch_sitema[0], situation_nch_sitema[1] %>
                         </div>
                       <% end %>
                       <div class="form-group">
@@ -277,7 +277,7 @@
                         <div class="radio radio-list">
                           <%= f.radio_button :hla_major_tests, hla_major_tests[0] %>
                           <label for="record_hla_major_tests_<%= hla_major_tests[0] %>"></label>
-                          <%= label :record_hla_major_tests, hla_major_tests[0], t(".profile_type."+hla_major_tests[1]) %>
+                          <%= label :record_hla_major_tests, hla_major_tests[0], hla_major_tests[1] %>
                         </div>
                       <% end %>
                       <div class="form-group">
@@ -297,7 +297,7 @@
                         <div class="radio radio-list">
                           <%= f.radio_button :there_examination_icd_10, there_examination_icd_10[0] %>
                           <label for="record_there_examination_icd_10_<%= there_examination_icd_10[0] %>"></label>
-                          <%= label :record_there_examination_icd_10, there_examination_icd_10[0], t(".profile_type."+there_examination_icd_10[1]) %>
+                          <%= label :record_there_examination_icd_10, there_examination_icd_10[0], there_examination_icd_10[1] %>
                         </div>
                       <% end %>
                       <div class="form-group">
@@ -335,7 +335,7 @@
                         <div class="radio radio-list">
                           <%= f.radio_button :type_of_hsct, type_of_hsct[0] %>
                           <label for="record_type_of_hsct_<%= type_of_hsct[0] %>"></label>
-                          <%= label :record_type_of_hsct, type_of_hsct[0], t(".profile_type."+type_of_hsct[1]) %>
+                          <%= label :record_type_of_hsct, type_of_hsct[0], type_of_hsct[1] %>
                         </div>
                       <% end %>
                       <div class="form-group">
@@ -348,14 +348,14 @@
               </div>
               <div class="col-xs-12">
                 <div class="panel panel-default">
-                  <div class="panel-heading">Qc11. Apresentou DECH?</div>
+                  <div class="panel-heading">Qc6. Existe identificação de diagnóstico da doença pelo CID-10 no prontuário?</div>
                   <div class="panel-body">
                     <div class="form-group group-choice">
                       <% @record.presence_of_gvhd_list.each do |presence_of_gvhd| %>
                         <div class="radio radio-list">
                           <%= f.radio_button :presence_of_gvhd, presence_of_gvhd[0] %>
                           <label for="record_presence_of_gvhd_<%= presence_of_gvhd[0] %>"></label>
-                          <%= label :record_presence_of_gvhd, presence_of_gvhd[0], t(".profile_type."+presence_of_gvhd[1]) %>
+                          <%= label :record_presence_of_gvhd, presence_of_gvhd[0], presence_of_gvhd[1] %>
                         </div>
                       <% end %>
                     </div>
@@ -371,7 +371,7 @@
                         <div class="radio radio-list">
                           <%= f.radio_button :forms_of_gvhd, forms_of_gvhd[0] %>
                           <label for="record_forms_of_gvhd_<%= forms_of_gvhd[0] %>"></label>
-                          <%= label :record_forms_of_gvhd, forms_of_gvhd[0], t(".profile_type."+forms_of_gvhd[1]) %>
+                          <%= label :record_forms_of_gvhd, forms_of_gvhd[0], forms_of_gvhd[1] %>
                         </div>
                       <% end %>
                     </div>

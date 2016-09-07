@@ -444,8 +444,8 @@
     div.grid.grid-list {
       .grid-body ul {
         li {
-          &:first-child { text-align: left; width: 30%; }
-          &:nth-child(2) { width: 40%; }
+          &:first-child { text-align: left; width: 40%; }
+          &:nth-child(2) { width: 30%; }
           &:nth-child(3) { width: 15%; }
           &:last-child { text-align: center; width: 15%; }
         }
@@ -459,7 +459,7 @@
     div.grid.grid-list {
       .grid-body ul {
         li {
-          &:first-child { text-align: left; width: 30%; }
+          &:first-child { text-align: left; width: 40%; }
           &:nth-child(2) { width: 40%; }
           &:nth-child(3) { width: 15%; }
           &:last-child { text-align: center; width: 15%; }

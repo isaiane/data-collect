@@ -7,7 +7,7 @@ class CreateRecords < ActiveRecord::Migration
 			#DADOS SOCIOMEDOGRÁFICOS
 			t.string :medical_record_number
 			t.date :birthday
-			t.date :birthplace																	#Qd1
+			t.string :birthplace																	#Qd1
 			t.string :place_residence														#Qd2
 			t.integer :age																			#Qd3
 			t.integer :sex																			#Qd4
@@ -26,23 +26,23 @@ class CreateRecords < ActiveRecord::Migration
 			#DADOS CLÍNICOS
 			t.integer :situation_nch_sitema																				#Qc1
 			t.text :cause_of_death																							  #Qc2
-			t.integer :diagnosis_time_and_end_of_treatment_years, default: 0			#Qc3
-			t.integer :diagnosis_time_and_end_of_treatment_months, default: 0			#Qc3_
-			t.integer :hsct_follow_up_of_the_nhc_years, default: 0								#Qc4
-			t.integer :hsct_follow_up_of_the_nhc_months, default: 0								#Qc4_
+			t.integer :diagnosis_time_and_end_of_treatment_years									#Qc3
+			t.integer :diagnosis_time_and_end_of_treatment_months									#Qc3_
+			t.integer :hsct_follow_up_of_the_nhc_years														#Qc4
+			t.integer :hsct_follow_up_of_the_nhc_months														#Qc4_
 			t.integer :hla_major_tests																						#Qc5
 			t.string :hla_major_tests_other																				#Qc5_
-			t.boolean :there_examination_icd_10																		#Qc6
+			t.integer :there_examination_icd_10																		#Qc6
 			t.string :there_examination_icd_10_note 															#Qc6_
 			t.text :diagnosis_doctor_in_medical_records													  #Qc7
 			t.text :described_comorbidities																			  #Qc8
 			t.text :treatments_described																				  #Qc9
 			t.integer :type_of_hsct																								#Qc10
 			t.text :type_of_hsct_note																							#Qc10_
-			t.boolean :presence_of_gvhd																						#Qc11
+			t.integer :presence_of_gvhd																						#Qc11
 			t.integer :forms_of_gvhd																							#Qc12
-			t.integer :survival_time_years, default: 0														#Qc13
-			t.integer :survival_time_months, default: 0														#Qc13_
+			t.integer :survival_time_years																				#Qc13
+			t.integer :survival_time_months																				#Qc13_
 
       t.timestamps null: false
     end

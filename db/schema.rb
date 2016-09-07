@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20160906004630) do
     t.string   "responsible_for_collecting"
     t.string   "medical_record_number"
     t.date     "birthday"
-    t.date     "birthplace"
+    t.string   "birthplace"
     t.string   "place_residence"
     t.integer  "age"
     t.integer  "sex"
@@ -43,25 +43,25 @@ ActiveRecord::Schema.define(version: 20160906004630) do
     t.integer  "profession_id"
     t.integer  "situation_nch_sitema"
     t.text     "cause_of_death"
-    t.integer  "diagnosis_time_and_end_of_treatment_years",  default: 0
-    t.integer  "diagnosis_time_and_end_of_treatment_months", default: 0
-    t.integer  "hsct_follow_up_of_the_nhc_years",            default: 0
-    t.integer  "hsct_follow_up_of_the_nhc_months",           default: 0
+    t.integer  "diagnosis_time_and_end_of_treatment_years"
+    t.integer  "diagnosis_time_and_end_of_treatment_months"
+    t.integer  "hsct_follow_up_of_the_nhc_years"
+    t.integer  "hsct_follow_up_of_the_nhc_months"
     t.integer  "hla_major_tests"
     t.string   "hla_major_tests_other"
-    t.boolean  "there_examination_icd_10"
+    t.integer  "there_examination_icd_10"
     t.string   "there_examination_icd_10_note"
     t.text     "diagnosis_doctor_in_medical_records"
     t.text     "described_comorbidities"
     t.text     "treatments_described"
     t.integer  "type_of_hsct"
     t.text     "type_of_hsct_note"
-    t.boolean  "presence_of_gvhd"
+    t.integer  "presence_of_gvhd"
     t.integer  "forms_of_gvhd"
-    t.integer  "survival_time_years",                        default: 0
-    t.integer  "survival_time_months",                       default: 0
-    t.datetime "created_at",                                             null: false
-    t.datetime "updated_at",                                             null: false
+    t.integer  "survival_time_years"
+    t.integer  "survival_time_months"
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
   end
 
   create_table "users", force: :cascade do |t|

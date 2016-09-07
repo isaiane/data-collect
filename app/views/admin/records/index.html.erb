@@ -48,27 +48,18 @@
 		<div class="row">
 		<div class="col-xs-12">
 			<div class="ctrls">
-				<% unless params[:account_id]%>
-	        <%= form_tag records_path, id: "filter-search", class: "filter", method: "GET" do %>
-	        	<span class="fa fa-search"></span>
-	        	<%= text_field_tag :search, params[:search], autocomplete: "off", :placeholder => t('form.search'), class:"form-control ng-pristine ng-valid ng-touched" %>
-	        	<%= hidden_field_tag :sort, params[:sort] %>
-	        	<%= hidden_field_tag :order, params[:order] %>
-	        <% end %>
-	      <% else %>
-	      	<%= form_tag account_records_path(@account), id: "filter-search", class: "filter", method: "GET" do %>
-	        	<span class="fa fa-search"></span>
-	        	<%= text_field_tag :search, params[:search], autocomplete: "off", :placeholder => t('form.search'), class:"form-control ng-pristine ng-valid ng-touched" %>
-	        	<%= hidden_field_tag :sort, params[:sort] %>
-	        	<%= hidden_field_tag :order, params[:order] %>
-	        <% end %>
-	      <% end %>
+        <%= form_tag records_path, id: "filter-search", class: "filter", method: "GET" do %>
+        	<span class="fa fa-search"></span>
+        	<%= text_field_tag :search, params[:search], autocomplete: "off", :placeholder => "Buscar por 'Número do Prontuário'", class:"form-control ng-pristine ng-valid ng-touched" %>
+        	<%= hidden_field_tag :sort, params[:sort] %>
+        	<%= hidden_field_tag :order, params[:order] %>
+        <% end %>
 	    </div>
       <div class="grid grid-list">
         <div class="grid-head">
           <ul>
-            <li style="width:30%"><a data-sort="responsible_for_collecting" data-order="asc">Responsavél pela Coleta</a></li>
-            <li style="width:40%"><a data-sort="medical_record_number" data-order="asc">Número do Prontuário</a></li>
+            <li style="width:40%"><a data-sort="responsible_for_collecting" data-order="asc">Responsavél pela Coleta</a></li>
+            <li style="width:30%"><a data-sort="medical_record_number" data-order="asc">Número do Prontuário</a></li>
             <li style="width:15%"><span>Data de Criação</span></li>
             <li style="width:15%"></li>
           </ul>
