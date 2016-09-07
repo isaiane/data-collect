@@ -49,7 +49,7 @@ class Admin::UsersController < SuperAdminController
         format.html { redirect_to @user, notice: t("helpers.action.updated", model: t("user")) }
         format.json { render :show, status: :ok, location: @user }
       else
-        format.html { render :edit }
+        format.html { render :show }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end

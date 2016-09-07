@@ -1,17 +1,434 @@
-<%= form_for(@admin_record) do |f| %>
-  <% if @admin_record.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@admin_record.errors.count, "error") %> prohibited this admin_record from being saved:</h2>
-
-      <ul>
-      <% @admin_record.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= form_for(@record, validate: true) do |f| %>
+  <% if @record.errors.any? %>
+    <div id="toast-container" class="toast-top-right">
+      <div class="toast toast-error">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <div class="toast-title"><%= t('errors.template.header', :count => @record.errors.count, :model => t('user')) %></div>
+        <div class="toast-message">
+           <ul>
+            <% @record.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="col-xs-12">
+    <ul class="list-group">
+      <li class="list-group-item" id="form-inputs">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 list-description">
+          </div>
+          <div class="col-xs-12 col-sm-5 list-content">
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <%= f.label :collection_date, "Data da Coleta", class: "control-label" %>
+                  <%= f.date_field :collection_date, class: "form-control" %>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <%= f.label :responsible_for_collecting, "Responsável pela Coleta", class: "control-label" %>
+                  <%= f.text_field :responsible_for_collecting, class: "form-control", placeholder: "Nome do responsavél" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item" id="form-inputs">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 list-description">
+            <h4>Dados Sociodemográficos</h4>
+          </div>
+          <div class="col-xs-12 col-sm-8 list-content">
+            <div class="row">
+              <div class="col-xs-8">
+                <div class="form-group">
+                  <%= f.label :medical_record_number, "Número do Prontuário", class: "control-label" %>
+                  <%= f.text_field :medical_record_number, class: "form-control", placeholder: "Nome do responsavél" %>
+                </div>
+              </div>
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <%= f.label :birthday, "Data Nascimento", class: "control-label" %>
+                  <%= f.date_field :birthday, class: "form-control" %>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <%= f.label :birthplace, "Qd1. Local de Nascimento", class: "control-label" %>
+                  <%= f.text_field :birthplace, class: "form-control", placeholder: "(Cidade/Estado)" %>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <%= f.label :place_residence, "Qd2. Local que reside", class: "control-label" %>
+                  <%= f.text_field :place_residence, class: "form-control", placeholder: "(Cidade/Estado)" %>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <%= f.label :age, "Qd3. Idade (em anos)", class: "control-label" %>
+                  <%= f.number_field :age, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                  <%= f.label :breed, "Qd5. Raça", class: "control-label" %>
+                  <%= f.text_field :breed, class: "form-control", placeholder: "Ex.: Branco, Negro..." %>
+                  <small>Descrita no prontuário</small>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <br>
+                <div class="panel panel-default">
+                  <div class="panel-heading">Qd4. Sexo</div>
+                  <div class="panel-body">
+                    <div class="form-group group-choice">
+                      <% @record.sexs.each do |sex| %>
+                        <div class="radio radio-list">
+                          <%= f.radio_button :sex, sex[0] %>
+                          <label for="record_sex_<%= sex[0] %>"></label>
+                          <%= label :record_sex, sex[0], t(".profile_type."+sex[1]) %>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">Qd6. Grau de escolaridade</div>
+                  <div class="panel-body">
+                    <div class="form-group group-choice">
+                      <% @record.schoolings.each do |schooling| %>
+                        <div class="radio radio-list">
+                          <%= f.radio_button :schooling, schooling[0] %>
+                          <label for="record_schooling_<%= schooling[0] %>"></label>
+                          <%= label :record_schooling, schooling[0], t(".profile_type."+schooling[1]) %>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <%= f.label :family_income, "Qd7. Renda Familiar", class: "control-label" %>
+                  <%= f.text_field :family_income, class: "form-control", data: {real: true}, placeholder: "R$ 0,00" %>
+                  <small>Soma de todos os salários brutos, sem deduções, das pessoas do grupo familiar que trabalham, inclusive do paciente.</small>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <%= f.label :dependent_income, "Qd8. Quantas pessoas dependem dessa renda?", class: "control-label" %>
+                  <%= f.number_field :dependent_income, class: "form-control" %>
+                  <small>Somente os que moram na sua casa, inclusive o paciente.</small>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">Qd9. Estado Civil</div>
+                  <div class="panel-body">
+                    <div class="form-group group-choice">
+                      <% @record.marital_status_list.each do |marital_status| %>
+                        <div class="radio radio-list">
+                          <%= f.radio_button :marital_status, marital_status[0] %>
+                          <label for="record_marital_status_<%= marital_status[0] %>"></label>
+                          <%= label :record_marital_status, marital_status[0], t(".profile_type."+marital_status[1]) %>
+                        </div>
+                      <% end %>
+                      <div class="form-group">
+                        <%= f.label :marital_status_duration, "Qd10. Se Casado ou em união estável, quanto tempo de convívio com parceiro(a)?", class: "control-label" %>
+                        <%= f.number_field :marital_status_duration, class: "form-control" %>
+                        <small>Em anos</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="panel panel-default">
+                  <div class="panel-heading">Qd11. Tipo de residência</div>
+                  <div class="panel-body">
+                    <div class="form-group group-choice">
+                      <% @record.type_of_residence_list.each do |type_of_residence| %>
+                        <div class="radio radio-list">
+                          <%= f.radio_button :type_of_residence, type_of_residence[0] %>
+                          <label for="record_type_of_residence_<%= type_of_residence[0] %>"></label>
+                          <%= label :record_type_of_residence, type_of_residence[0], t(".profile_type."+type_of_residence[1]) %>
+                        </div>
+                      <% end %>
+                      <div class="form-group">
+                        <%= f.label :type_of_residence_other, "Especifique", class: "control-label" %>
+                        <%= f.text_field :type_of_residence_other, class: "form-control" %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="panel panel-default">
+                  <div class="panel-heading">Qd12. Caracteristica da moradia</div>
+                  <div class="panel-body">
+                    <div class="form-group group-choice">
+                      <% @record.characterization_of_housing_list.each do |characterization_of_housing| %>
+                        <div class="radio radio-list">
+                          <%= f.radio_button :characterization_of_housing, characterization_of_housing[0] %>
+                          <label for="record_characterization_of_housing_<%= characterization_of_housing[0] %>"></label>
+                          <%= label :record_characterization_of_housing, characterization_of_housing[0], t(".profile_type."+characterization_of_housing[1]) %>
+                        </div>
+                      <% end %>
+                      <div class="form-group">
+                        <%= f.label :characterization_of_housing_other, "Especifique", class: "control-label" %>
+                        <%= f.text_field :characterization_of_housing_other, class: "form-control" %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <%= f.label :profession, "Qd13. Ocupação", class: "control-label" %>
+                  <%= f.collection_select :profession_id, Profession.rank(:row_order).all, :id, :name, {prompt: "Selecione uma Ocupação"}, {:class => 'form-control'} %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item" id="form-inputs">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 list-description">
+            <h4>Dados Clínicos</h4>
+          </div>
+          <div class="col-xs-12 col-sm-8 list-content">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">Qc1. Situação atual junto ao Serviço de Hematologia (NHC)</div>
+                  <div class="panel-body">
+                    <div class="form-group group-choice">
+                      <% @record.situation_nch_sitema_list.each do |situation_nch_sitema| %>
+                        <div class="radio radio-list">
+                          <%= f.radio_button :situation_nch_sitema, situation_nch_sitema[0] %>
+                          <label for="record_situation_nch_sitema_<%= situation_nch_sitema[0] %>"></label>
+                          <%= label :record_situation_nch_sitema, situation_nch_sitema[0], t(".profile_type."+situation_nch_sitema[1]) %>
+                        </div>
+                      <% end %>
+                      <div class="form-group">
+                        <%= f.label :cause_of_death, "Qc2. Em caso de óbito, qual(is) a(s) causa(s) da morte", class: "control-label" %>
+                        <%= f.text_area :cause_of_death, rows: 3, class: "form-control" %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="panel panel-default">
+                  <div class="panel-heading">Qc3. Tempo entre a data do diagnóstico e o encerramento do tratamento (quando aplicado)</div>
+                  <div class="panel-body">
+                    <div class="row">
+                      <div class="col-xs-6">
+                        <div class="form-group">
+                          <%= f.label :diagnosis_time_and_end_of_treatment_years, "Anos" %>
+                          <%= f.number_field :diagnosis_time_and_end_of_treatment_years, class: "form-control" %>
+                        </div>
+                      </div>
+                      <div class="col-xs-6">
+                        <div class="form-group">
+                          <%= f.label :diagnosis_time_and_end_of_treatment_months, "meses" %>
+                          <%= f.number_field :diagnosis_time_and_end_of_treatment_months, class: "form-control" %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="panel panel-default">
+                  <div class="panel-heading">Qc4. Tempo de Acompanhamento pelo serviço de TCTH do NHC</div>
+                  <div class="panel-body">
+                    <div class="row">
+                      <div class="col-xs-6">
+                        <div class="form-group">
+                          <%= f.label :hsct_follow_up_of_the_nhc_years, "Anos" %>
+                          <%= f.number_field :hsct_follow_up_of_the_nhc_years, class: "form-control" %>
+                        </div>
+                      </div>
+                      <div class="col-xs-6">
+                        <div class="form-group">
+                          <%= f.label :hsct_follow_up_of_the_nhc_months, "meses" %>
+                          <%= f.number_field :hsct_follow_up_of_the_nhc_months, class: "form-control" %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">Qc5. Situação atual junto ao Serviço de Hematologia (NHC)</div>
+                  <div class="panel-body">
+                    <div class="form-group group-choice">
+                      <% @record.hla_major_tests_list.each do |hla_major_tests| %>
+                        <div class="radio radio-list">
+                          <%= f.radio_button :hla_major_tests, hla_major_tests[0] %>
+                          <label for="record_hla_major_tests_<%= hla_major_tests[0] %>"></label>
+                          <%= label :record_hla_major_tests, hla_major_tests[0], t(".profile_type."+hla_major_tests[1]) %>
+                        </div>
+                      <% end %>
+                      <div class="form-group">
+                        <%= f.label :hla_major_tests_other, "Especifique", class: "control-label" %>
+                        <%= f.text_field :hla_major_tests_other, class: "form-control" %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">Qc6. Existe identificação de diagnóstico da doença pelo CID-10 no prontuário?</div>
+                  <div class="panel-body">
+                    <div class="form-group group-choice">
+                      <% @record.there_examination_icd_10_list.each do |there_examination_icd_10| %>
+                        <div class="radio radio-list">
+                          <%= f.radio_button :there_examination_icd_10, there_examination_icd_10[0] %>
+                          <label for="record_there_examination_icd_10_<%= there_examination_icd_10[0] %>"></label>
+                          <%= label :record_there_examination_icd_10, there_examination_icd_10[0], t(".profile_type."+there_examination_icd_10[1]) %>
+                        </div>
+                      <% end %>
+                      <div class="form-group">
+                        <%= f.label :there_examination_icd_10_note, "Qual?", class: "control-label" %>
+                        <%= f.text_field :there_examination_icd_10_note, class: "form-control" %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <%= f.label :diagnosis_doctor_in_medical_records, "Qc7. Qual(is) diagnóstico(s) médico aparece(m) descrito(s) no prontuário?", class: "control-label" %>
+                  <%= f.text_area :diagnosis_doctor_in_medical_records, rows: 5, class: "form-control" %>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <%= f.label :described_comorbidities, "Qc8. Apresenta comorbidades descritas? Quais:", class: "control-label" %>
+                  <%= f.text_area :described_comorbidities, rows: 5, class: "form-control" %>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <%= f.label :treatments_described, "Qc9. Quais tratamentos aparecem prescritos:", class: "control-label" %>
+                  <%= f.text_area :treatments_described, rows: 7, class: "form-control" %>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">Qc10. Qual tipo de TCTH realizado?</div>
+                  <div class="panel-body">
+                    <div class="form-group group-choice">
+                      <% @record.type_of_hsct_list.each do |type_of_hsct| %>
+                        <div class="radio radio-list">
+                          <%= f.radio_button :type_of_hsct, type_of_hsct[0] %>
+                          <label for="record_type_of_hsct_<%= type_of_hsct[0] %>"></label>
+                          <%= label :record_type_of_hsct, type_of_hsct[0], t(".profile_type."+type_of_hsct[1]) %>
+                        </div>
+                      <% end %>
+                      <div class="form-group">
+                        <%= f.label :type_of_hsct_note, "Observação", class: "control-label" %>
+                        <%= f.text_area :type_of_hsct_note, rows: 3, class: "form-control" %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">Qc11. Apresentou DECH?</div>
+                  <div class="panel-body">
+                    <div class="form-group group-choice">
+                      <% @record.presence_of_gvhd_list.each do |presence_of_gvhd| %>
+                        <div class="radio radio-list">
+                          <%= f.radio_button :presence_of_gvhd, presence_of_gvhd[0] %>
+                          <label for="record_presence_of_gvhd_<%= presence_of_gvhd[0] %>"></label>
+                          <%= label :record_presence_of_gvhd, presence_of_gvhd[0], t(".profile_type."+presence_of_gvhd[1]) %>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="panel panel-default">
+                  <div class="panel-heading">Qc12. Caso a resposta tenha sido SIM, marque qual das duas formas de DECH ocorreu</div>
+                  <div class="panel-body">
+                    <div class="form-group group-choice">
+                      <% @record.forms_of_gvhd_list.each do |forms_of_gvhd| %>
+                        <div class="radio radio-list">
+                          <%= f.radio_button :forms_of_gvhd, forms_of_gvhd[0] %>
+                          <label for="record_forms_of_gvhd_<%= forms_of_gvhd[0] %>"></label>
+                          <%= label :record_forms_of_gvhd, forms_of_gvhd[0], t(".profile_type."+forms_of_gvhd[1]) %>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="panel panel-default">
+                  <div class="panel-heading">Qc13. Qual o tempo de sobrevida do transplantado?</div>
+                  <div class="panel-body">
+                    <div class="row">
+                      <div class="col-xs-6">
+                        <div class="form-group">
+                          <%= f.label :survival_time_years, "Anos" %>
+                          <%= f.number_field :survival_time_years, class: "form-control" %>
+                        </div>
+                      </div>
+                      <div class="col-xs-6">
+                        <div class="form-group">
+                          <%= f.label :survival_time_months, "meses" %>
+                          <%= f.number_field :survival_time_months, class: "form-control" %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <% if can? :destroy, @record %>
+        <% if @record.id %>
+          <li class="list-group-item" id="form-inputs">
+            <div class="row">
+              <div class="col-xs-12 col-sm-4 list-description">
+                <h4 class="text-danger">Coleta</h4>
+                <p><%= t("helpers.delete.description", model: t("record"))%></p>
+              </div>
+              <div class="col-xs-12 col-sm-5 list-content">
+                <%= link_to t('helpers.submit.destroy', model: t("record")), @record, class: "btn btn-danger call-modal-destroy" %>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+      <li class="list-group-item" id="form-inputs">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 list-description">
+            <h4>Salvar</h4>
+          </div>
+          <div class="col-xs-12 col-sm-5 list-content">
+            <%= f.submit t('helpers.submit.save'), class: "btn btn-primary" %>
+            <%= link_to t('helpers.submit.cancel'), records_path, class: "btn btn-default" %>
+          </div>
+        </div>
+      </li>
+    </ul>
   </div>
 <% end %>

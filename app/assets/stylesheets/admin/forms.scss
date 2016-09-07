@@ -81,25 +81,38 @@ ol.separate-group {
 .group-choice {
 	display: block;
 	overflow: hidden;
-	.radio + .radio,
-	.checkbox + .checkbox {
+	.radio + .radio:not(.radio-list),
+	.checkbox + .checkbox:not(.checkbox-list) {
 		margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 20px;
 	}
-	.radio,
-	.checkbox {
+	.radio:not(.radio-list),
+	.checkbox:not(.checkbox-list) {
 		display: block;
 		float: left;
 		& > label {
 			display: table;
+      font-weight: $font-bold;
+      margin: 0 auto;
+      padding: 0;
+      padding-left: 0;
+      cursor: pointer;
+    }
+  }
+  .radio-list,
+  .checkbox-list {
+    margin-bottom: 10px;
+    overflow: hidden;
+    & > label {
 			font-weight: $font-bold;
-	  	margin: 0 auto;
-			padding: 0;
-			padding-left: 0;
-	  	cursor: pointer;
-		}
-	}
+      padding: 0;
+      margin: 0 5px 5px 0;
+      display: block;
+      float: left;
+      line-height: 2em;
+    }
+  }
 }
 input[type="checkbox"],
 input[type="radio"] {
@@ -232,3 +245,9 @@ input[type="checkbox"]:disabled + label {
 }
 .popover-title {font-size: $font-small;}
 .popover-content {font-size: $font-wee;}
+.panel {
+  .panel-body {
+    padding: 0 15px;
+    .group-choice {margin: 0;}
+  }
+}

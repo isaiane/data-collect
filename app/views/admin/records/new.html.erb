@@ -1,5 +1,19 @@
-<h1>New Admin Record</h1>
+<div class="container-fluid page-header" id="page-title">
+	<div class="container">
+		<div class="row">
+		  <div class="col-xs-6">
+		    <h4 class="page-title"><i class="fa fa-file-text-o"></i><%= t('helpers.submit.create', model: t('record')) %></h4>
+		  </div>
+		</div>
+	</div>
+</div>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', admin_records_path %>
+<section class="container-fluid container-form">
+	<div class="container">
+		<div class="row">
+			<div id="main">
+				<%= render "form" %>
+			</div>
+		</div>
+	</div>
+</section>

@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if current_user.rule <= 2
-      '/admin/users'
+      '/admin/dashboard'
     else
       account_path(current_user.account)
     end

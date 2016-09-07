@@ -2,6 +2,7 @@
 pt-BR:
   user: "Usuário"
   profession: "Profissão"
+  record: "Coleta"
   pluralize:
     all:
       female: "Todas as %{model}"

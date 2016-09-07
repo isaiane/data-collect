@@ -1,4 +1,49 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid page-header" id="page-title">
+	<div class="container">
+		<div class="row">
+		  <div class="col-xs-12 col-sm-6">
+		    <h4 class="page-title">
+	    		<i class="fa fa-file-text-o"></i>
+		    	<%= link_to "Coletas", records_path %>
+		    	<span class="fa fa-chevron-right"></span>
+		    	Coleta
+		    	</h4>
+		  </div>
+		</div>
+	</div>
+</div>
 
-<%= link_to 'Edit', edit_admin_record_path(@admin_record) %> |
-<%= link_to 'Back', admin_records_path %>
+<section class="container-fluid container-form">
+	<div class="container">
+		<div class="row">
+			<div id="main">
+				<%= render "form" %>
+			</div>
+		</div>
+	</div>
+</section>
+
+<div class="overlay admin">
+	<div class="dark-side"></div>
+	<div id="destroy" class="modal admin-modal">
+    <i class="fa fa-times close-modal"></i>
+    <div class="content-modal">
+      <form class="form-confirmation-destroy form-confirm" method="post">
+        <div class="bait-content">
+          <div class="head-modal">
+            <h4>Delete Coleta</h4>
+            <p><b>ATENÇÃO:</b> A exclusão é permanente e não pode ser desfeita.</p>
+            <p><strong>Escreva DESTROY abaixo</strong></p>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="confirmation" id="confirmation-destroy" autocomplete="off"  required>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-link close-modal">Cancelar</button>
+            <%= link_to "Delete", "", method: :delete, class: "btn btn-danger", id: "button-destroy", disabled: "disabled" %>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

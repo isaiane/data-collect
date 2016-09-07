@@ -41,8 +41,6 @@
 	  </div>
 	</div>
 
-	<%= render "admin/accounts/shared" %>
-
 <% end %>
 
 <section id="users" class="container-fluid listing">
@@ -51,7 +49,7 @@
 		<div class="col-xs-12">
 			<div class="ctrls">
 				<% unless params[:account_id]%>
-	        <%= form_tag users_path, id: "filter-search", class: "filter", method: "GET" do %>
+	        <%= form_tag records_path, id: "filter-search", class: "filter", method: "GET" do %>
 	        	<span class="fa fa-search"></span>
 	        	<%= text_field_tag :search, params[:search], autocomplete: "off", :placeholder => t('form.search'), class:"form-control ng-pristine ng-valid ng-touched" %>
 	        	<%= hidden_field_tag :sort, params[:sort] %>
@@ -84,13 +82,3 @@
 	</div>
 </section>
 
-<% if params[:account_id]%>
-	<div class="overlay admin">
-	  <div class="dark-side"></div>
-	  <% unless @account.incomplete? %>
-	    <div id="options-model" class="modal options-modal">
-	      <%= render "admin/accounts/options" %>
-	    </div>
-	  <% end %>
-	</div>
-<% end %>

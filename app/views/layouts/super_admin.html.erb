@@ -36,7 +36,7 @@
 										  </li>
 										  <li><div class="no-accordion-link"><i class="fa fa-bar-chart"></i><%= link_to "Gráficos", dashboard_index_path %></a></div>
 										  </li>
-										  <li><div class="no-accordion-link"><i class="fa fa-file-text-o"></i><%= link_to "Prontuários", records_path %></div>
+										  <li><div class="no-accordion-link"><i class="fa fa-file-text-o"></i><%= link_to "Coletas", records_path %></div>
 										  </li>
 										  <li><div class="no-accordion-link"><i class="fa fa-flask"></i><%= link_to "Profissões", professions_path %></div>
 										  </li>
@@ -87,23 +87,6 @@
 			</div>
 		<% end %>
 
-		<footer id="footer-admin">
-			<div class="container-fluid">
-			  <div class="row">
-				  <div class="col-xs-12 col-sm-6">
-					  <a href="http://www.autoforce.com.br/" class="btn btn-link btn-xs" target="_black">autoforce.com.br</a>
-					  <a href="#" class="btn btn-link btn-xs" target="_black">Blog</a>
-					  <a href="#" class="btn btn-primary btn-xs" target="_black" data-toggle="tooltip" data-placement="top" data-title="Equipe de Suporte">Pitstop</a>
-					  <a href="#" class="btn btn-link btn-xs link-featured" target="_black">Universidade de Pilotos</a>
-				  </div>
-				  <div class="col-xs-12 col-sm-6 text-right">
-					  <a href="http://www.autoforce.com.br/" class="btn btn-link btn-xs" target="_black">Termos de Uso</a>
-					  <a href="#" class="btn btn-link btn-xs" target="_black">Privacidade</a>
-					  <a href="http://www.autoforce.com.br/" class="btn btn-link btn-xs link-featured">© 2016 <strong>Autodrómo</strong> by AutoForce.</a>
-				  </div>
-			  </div>
-			</div>
-		</footer>
   	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	</body>
 </html>

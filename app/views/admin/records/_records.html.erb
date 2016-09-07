@@ -1,0 +1,32 @@
+<ul class="grid-items">
+	<% @records.each do |record| %>
+		<% if can? :read, record %>
+			<li class="grid-body">
+			  <ul>
+			    <li>
+			      <span class="grid-user">
+			        <span class="grid-title"><%= link_to record.responsible_for_collecting, record %></span>
+			      </span>
+			    </li>
+			    <li>
+			      <span class="grid-title"><%= link_to record.medical_record_number, record %></span>
+			    </li>
+			    <li>
+			      <span class="grid-date">
+			      	<%= distance_of_time_in_words(Time.now, record.created_at, scope: 'datetime.distance_in_words') %>
+			      </span>
+			    </li>
+			    <li>
+			      <span class="grid-options">
+			      	<%= link_to record do %>
+			      		<span class="fa fa-ellipsis-h"></span>
+							<% end %>
+			      </span>
+			    </li>
+			  </ul>
+			</li>
+		<% end %>
+	<% end %>
+</ul>
+
+<%= will_paginate @records, renderer: BootstrapPagination::Rails %>

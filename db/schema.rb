@@ -37,23 +37,25 @@ ActiveRecord::Schema.define(version: 20160906004630) do
     t.integer  "marital_status"
     t.integer  "marital_status_duration"
     t.integer  "type_of_residence"
+    t.string   "type_of_residence_other"
     t.integer  "characterization_of_housing"
     t.string   "characterization_of_housing_other"
     t.integer  "profession_id"
     t.integer  "situation_nch_sitema"
-    t.string   "cause_of_death"
+    t.text     "cause_of_death"
     t.integer  "diagnosis_time_and_end_of_treatment_years",  default: 0
     t.integer  "diagnosis_time_and_end_of_treatment_months", default: 0
     t.integer  "hsct_follow_up_of_the_nhc_years",            default: 0
     t.integer  "hsct_follow_up_of_the_nhc_months",           default: 0
     t.integer  "hla_major_tests"
     t.string   "hla_major_tests_other"
-    t.integer  "there_examination_icd_10"
-    t.string   "there_examination_icd_10_other"
-    t.string   "diagnosis_doctor_in_medical_records"
-    t.string   "described_comorbidities"
-    t.string   "treatments_described"
+    t.boolean  "there_examination_icd_10"
+    t.string   "there_examination_icd_10_note"
+    t.text     "diagnosis_doctor_in_medical_records"
+    t.text     "described_comorbidities"
+    t.text     "treatments_described"
     t.integer  "type_of_hsct"
+    t.text     "type_of_hsct_note"
     t.boolean  "presence_of_gvhd"
     t.integer  "forms_of_gvhd"
     t.integer  "survival_time_years",                        default: 0

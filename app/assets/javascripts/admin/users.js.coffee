@@ -1,6 +1,5 @@
 jQuery ->
   new UserCarrierWaveCropper()
-  console.log("aqui");
 
 class UserCarrierWaveCropper
   constructor: ->

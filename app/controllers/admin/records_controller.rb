@@ -1,10 +1,14 @@
 class Admin::RecordsController < SuperAdminController
-  before_action :set_record, only: [:show, :edit, :update, :destroy]
+  before_action :set_record, only: [:show, :update, :destroy]
 
   # GET /admin/records
   # GET /admin/records.json
   def index
-    @records = Record.all
+    if params[:search]
+      @records = Record.search(params[:search], params[:sort], params[:order],params[:page])
+    else
+      @records = Record.all.paginate(page: params[:page], per_page: 9)
+    end
   end
 
   # GET /admin/records/1
@@ -28,7 +32,7 @@ class Admin::RecordsController < SuperAdminController
 
     respond_to do |format|
       if @record.save
-        format.html { redirect_to @record, notice: 'Record was successfully created.' }
+        format.html { redirect_to @record, notice: t("helpers.action.created", model: t("record"))  }
         format.json { render :show, status: :created, location: @record }
       else
         format.html { render :new }
@@ -42,10 +46,10 @@ class Admin::RecordsController < SuperAdminController
   def update
     respond_to do |format|
       if @record.update(record_params)
-        format.html { redirect_to @record, notice: 'Record was successfully updated.' }
+        format.html { redirect_to @record, notice: t("helpers.action.updated", model: t("record"))  }
         format.json { render :show, status: :ok, location: @record }
       else
-        format.html { render :edit }
+        format.html { render :show }
         format.json { render json: @record.errors, status: :unprocessable_entity }
       end
     end
@@ -56,7 +60,7 @@ class Admin::RecordsController < SuperAdminController
   def destroy
     @record.destroy
     respond_to do |format|
-      format.html { redirect_to records_url, notice: 'Record was successfully destroyed.' }
+      format.html { redirect_to records_url, notice: t("helpers.action.destroyed", model: t("record"))  }
       format.json { head :no_content }
     end
   end
@@ -69,6 +73,8 @@ class Admin::RecordsController < SuperAdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def record_params
-      params.fetch(:record, {})
+      params.require(:record).permit(:collection_date, :responsible_for_collecting, :medical_record_number, :birthday, :birthplace, :place_residence, :age, :sex, :breed, :schooling, :family_income, :dependent_income, :marital_status, :marital_status_duration, :type_of_residence, :type_of_residence_other, :characterization_of_housing, :characterization_of_housing_other, :profession, :situation_nch_sitema, :cause_of_death, :diagnosis_time_and_end_of_treatment_years, :diagnosis_time_and_end_of_treatment_months, :hsct_follow_up_of_the_nhc_years, :hsct_follow_up_of_the_nhc_months, :hla_major_tests, :hla_major_tests_other, :there_examination_icd_10, :there_examination_icd_10_note, :diagnosis_doctor_in_medical_records, :described_comorbidities, :treatments_described, :type_of_hsct, :type_of_hsct_note, :presence_of_gvhd, :forms_of_gvhd, :survival_time_years, :survival_time_months)
     end
 end
+
+

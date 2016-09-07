@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get 'developer/ui_elements' => 'developer#ui_elements'
 
     resources :dashboard, :resources, only: [:index]
-    resources :records
+    resources :records, except: [:edit]
     resources :professions, only: [:index, :destroy, :create] do
       collection do
         post 'update_row_order'
